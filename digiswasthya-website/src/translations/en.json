@@ -1,0 +1,145 @@
+{
+    "nav": {
+        "home": "Home",
+        "about": "About Us",
+        "contact": "Contact Us",
+        "team": "Our Team",
+        "resources": "Resources",
+        "media": "Media & Resources",
+        "privacy": "Privacy Policy",
+        "terms": "Terms and Conditions",
+        "donate": "Donate Now"
+    },
+    "footer": {
+        "tagline": "Making healthcare services affordable and accessible for rural communities across India.",
+        "address": "Kali Road, Kathaicha Chauraha, Nath Nagar, Sant Kabir Nagar, UP - 272176",
+        "quickLinks": "Quick Links",
+        "connect": "Connect With Us",
+        "sendMessage": "Send us a message",
+        "form": {
+            "name": "Your Name",
+            "email": "Your Email",
+            "message": "Message",
+            "consent": "I consent to Digiswasthya collecting my details.",
+            "submit": "Send Message",
+            "sending": "Sending...",
+            "nameRequired": "Name is required",
+            "emailRequired": "Email is required",
+            "messageRequired": "Message is required",
+            "consentRequired": "Consent required"
+        },
+        "copyright": "© 2023 Digiswasthya - All Rights Reserved.",
+        "success": "Thank you for your message!"
+    },
+    "hero": {
+        "titlePart1": "Making Quality Healthcare Reach",
+        "titleHighlight": "Every",
+        "titlePart2": "Rural Family",
+        "subtitle": "Bridging the gap between rural India and modern medicine through expert teleconsultation and essential diagnostics at your doorstep.",
+        "bookConsultation": "Book Consultation"
+    },
+    "stats": {
+        "patientsServed": "Patients Served",
+        "consultations": "Consultations",
+        "villagesCovered": "Villages Covered",
+        "livesImpacted": "Lives Impacted"
+    },
+    "services": {
+        "badge": "Comprehensive Healthcare Ecosystem",
+        "titlePart1": "Bridging the Gap Between",
+        "titleHighlight": "Rural India",
+        "titlePart2": "& Modern Medicine",
+        "description": "We provide a full spectrum of healthcare services directly to underserved communities, ensuring quality care is accessible to all.",
+        "items": {
+            "checkups": {
+                "title": "Health Checkups",
+                "description": "Comprehensive screenings in rural areas to identify symptoms, perform physical exams, and monitor vital signs for early disease detection."
+            },
+            "teleconsultation": {
+                "title": "Teleconsultation",
+                "description": "Connecting rural patients with specialist doctors via high-speed video links, bridging the gap between villages and urban medical centers."
+            },
+            "diagnostics": {
+                "title": "Diagnostics",
+                "description": "Providing essential lab tests and diagnostic tools on-site, ensuring patients receive accurate results without traveling long distances."
+            },
+            "referrals": {
+                "title": "Referrals",
+                "description": "Guidance and seamless referral pathways to trusted secondary and tertiary hospitals for specialized surgery or advanced treatments."
+            }
+        }
+    },
+    "impact": {
+        "title": "Measurable Impact.",
+        "highlight": "Proven Outcomes.",
+        "description": "Our data-driven approach ensures that every rupee donated translates into direct medical intervention for those who need it most.",
+        "patientsServed": "Patients Served",
+        "consultations": "Consultations",
+        "livesImpacted": "Lives Impacted",
+        "livesTransformed": "Lives Transformed",
+        "expertAdvice": "Expert Medical Advice",
+        "healthierCommunities": "Healthier Communities"
+    },
+    "donateSection": {
+        "title": "DONATE FOR THE CAUSE!",
+        "description": "As of January 2026, DigiSwasthya has been able to facilitate 117,644+ teleconsultations, and many of these have been financed by our valuable donors. You can join our patron program through which a monthly contribution from you would be directed towards funding a few consultations.",
+        "boxText": "You can sponsor teleconsultations for four patients by donating a sum of",
+        "boxHighlight": "₹1,000/-",
+        "boxTextAfter": "only.",
+        "donateNowLabel": "Donate Now",
+        "upiLabel": "UPI ID"
+    },
+    "bmi": {
+        "title": "BMI Health Assessment",
+        "subtitle": "Understand your Body Mass Index and take informed steps toward better health.",
+        "disclaimer": "This tool is for general health awareness and does not replace medical advice."
+    },
+    "bmiCalculator": {
+        "assessment": "Assessment",
+        "metric": "Metric",
+        "imperial": "Imperial",
+        "weight": "Weight",
+        "height": "Height",
+        "kg": "kg",
+        "lbs": "lbs",
+        "cm": "cm",
+        "ftIn": "ft & in",
+        "calculate": "Calculate BMI",
+        "reset": "Reset",
+        "readyTitle": "Ready to assess?",
+        "readySub": "Enter your height and weight to see your health category.",
+        "yourBmiValue": "Your BMI Value",
+        "under": "UNDER",
+        "normal": "NORMAL",
+        "over": "OVER",
+        "obese": "OBESE",
+        "categories": {
+            "underweight": "Underweight",
+            "normal": "Normal",
+            "overweight": "Overweight",
+            "obese": "Obese"
+        },
+        "messages": {
+            "underweight": "Your BMI is in the underweight range. Consider consulting a healthcare provider for personalized nutritional advice.",
+            "normal": "Great job! Your BMI is within the healthy range. Maintain a balanced diet and regular physical activity to stay healthy.",
+            "overweight": "Your BMI is in the overweight range. Small changes in diet and regular exercise can help you reach a healthier weight.",
+            "obese": "Your BMI is in the obese range. We recommend consulting a healthcare professional to discuss a personalized health plan."
+        }
+    },
+    "social": {
+        "followTitle": "Follow Us On Social Media"
+    },
+    "award": {
+        "badge": "AWARD & RECOGNITION",
+        "titlePart1": "Recognized for Excellence in",
+        "titleHighlight": "Rural Healthcare",
+        "quote": "\"DigiSwasthya aims 'Making healthcare services affordable and accessible for rural communities across India by leveraging technology'\"",
+        "description": "Our commitment to transparency and impact has been recognized by leading institutions. This award serves as a testament to our dedicated team and the rural families we serve every day."
+    },
+    "common": {
+        "selectLanguage": "Select Language",
+        "english": "English",
+        "hindi": "Hindi (हिंदी)",
+        "tagline": "Jahan Kam, Wahan Hum!"
+    }
+}

@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary-50: #f0f9ff;
+  --color-primary-100: #e0f2fe;
+  --color-primary-200: #bae6fd;
+  --color-primary-300: #7dd3fc;
+  --color-primary-400: #38bdf8;
+  --color-primary-500: #0ea5e9;
+  --color-primary-600: #0284c7;
+  --color-primary-700: #0369a1;
+  --color-primary-800: #075985;
+  --color-primary-900: #0c4a6e;
+  --color-primary-950: #082f49;
+
+  --color-secondary-50: #f0fdf4;
+  --color-secondary-100: #dcfce7;
+  --color-secondary-200: #bbf7d0;
+  --color-secondary-300: #86efac;
+  --color-secondary-400: #4ade80;
+  --color-secondary-500: #22c55e;
+  --color-secondary-600: #16a34a;
+  --color-secondary-700: #15803d;
+  --color-secondary-800: #166534;
+  --color-secondary-900: #14532d;
+  --color-secondary-950: #052e16;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /* Container customization logic varies in v4, simpler to override with utility */
+}
+
+/* Custom Container Utility Override */
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1rem;
+  max-width: 1400px;
+  /* Custom 2xl override simulation */
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Accessibility Overrides */
+html.acc-text-lg {
+  font-size: 110%;
+}
+
+html.acc-text-xl {
+  font-size: 120%;
+}
+
+html.acc-grayscale {
+  filter: grayscale(100%);
+}
+
+html.acc-high-contrast {
+  filter: contrast(150%);
+}
+
+html.acc-negative-contrast {
+  filter: invert(100%);
+}
+
+html.acc-light-bg {
+  background-color: white !important;
+  color: black !important;
+}
+
+html.acc-light-bg * {
+  background-color: white !important;
+  color: black !important;
+}
+
+html.acc-links-underline a {
+  text-decoration: underline !important;
+}
+
+html.acc-readable-font {
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
+/* Custom Scrollbar for Webkit */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d1d5db;
+  /* gray-300 */
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #9ca3af;
+  /* gray-400 */
+}
