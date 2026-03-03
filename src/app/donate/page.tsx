@@ -32,7 +32,6 @@ const loadExternalScript = (src: string): Promise<boolean> => {
     });
 };
 
-const PRESET_AMOUNTS = [500, 1000, 5000];
 
 export default function DonatePage() {
     const [amount, setAmount] = useState<number | "">(1000);
@@ -223,31 +222,18 @@ export default function DonatePage() {
 
                                 {/* Amount */}
                                 <div className="space-y-4">
-                                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.1em]">Select Amount</label>
-                                    <div className="grid grid-cols-3 gap-3">
-                                        {PRESET_AMOUNTS.map((amt) => (
-                                            <button
-                                                key={amt}
-                                                onClick={() => setAmount(amt)}
-                                                className={`py-5 rounded-2xl border-2 font-black transition-all text-sm ${amount === amt
-                                                    ? "border-primary-600 bg-primary-50 text-primary-600 shadow-lg shadow-primary-600/10 scale-[1.02]"
-                                                    : "border-slate-50 text-slate-400 hover:border-slate-200"
-                                                    }`}
-                                            >
-                                                ₹{amt.toLocaleString()}
-                                            </button>
-                                        ))}
-                                    </div>
+                                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.1em]">Enter Donation Amount</label>
                                     <div className="relative group">
                                         <div className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-900 font-black text-2xl group-focus-within:text-primary-600">₹</div>
                                         <Input
                                             type="number"
                                             value={amount}
-                                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setAmount(Number(e.target.value))}
-                                            placeholder="Other Amount"
+                                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setAmount(e.target.value === "" ? "" : Number(e.target.value))}
+                                            placeholder="Enter amount (e.g. 500, 1000, 5000)"
                                             className="h-20 pl-14 rounded-3xl border-slate-100 bg-slate-50 font-black text-2xl text-slate-900 focus:bg-white focus:ring-8 focus:ring-primary-500/5 focus:border-primary-600 transition-all shadow-inner"
                                         />
                                     </div>
+                                    <p className="text-[10px] text-slate-400 font-medium px-2 italic">Minimum donation amount is ₹100</p>
                                 </div>
 
                                 {/* Method */}
