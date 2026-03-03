@@ -6,7 +6,7 @@ import { Heart } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
 export function DonateSection() {
-    const { t, language } = useLanguage();
+    const { t } = useLanguage();
     const customVideoId = "KOQjv1xyfkg"; // From user
 
     return (
@@ -25,7 +25,7 @@ export function DonateSection() {
                                 <p className="text-gray-800 font-medium mb-4">
                                     {t("donateSection.boxText")}{" "}
                                     <span className="text-green-600 font-bold">{t("donateSection.boxHighlight")}</span>{" "}
-                                    {language === 'hi' ? t("donateSection.boxTextSuccess") : t("donateSection.boxTextAfter")}
+                                    {t("donateSection.boxTextAfter")}
                                 </p>
                                 <div className="space-y-2 text-sm text-gray-600 font-bold">
                                     <p><strong>1) {t("donateSection.donateNowLabel")}:</strong> bit.ly/Gift2DS</p>
