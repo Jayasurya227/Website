@@ -19,7 +19,8 @@ import {
     Database,
     Clock,
     RefreshCcw,
-    ClipboardList
+    ClipboardList,
+    ArrowRight
 } from "lucide-react";
 
 const fadeIn = {
@@ -29,9 +30,19 @@ const fadeIn = {
     transition: { duration: 0.6 }
 };
 
+/* Fade-in-up for cards with stagger support */
+const cardVariants = {
+    hidden: { opacity: 0, y: 14 },
+    visible: (delay: number) => ({
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.5, delay, ease: "easeOut" }
+    })
+};
+
 export default function AboutUs() {
     return (
-        <main className="min-h-screen bg-white">
+        <main className="min-h-screen bg-[#f5f7fa]">
             <Navbar />
 
             {/* Header / Hero */}
@@ -59,11 +70,20 @@ export default function AboutUs() {
             </section>
 
             {/* 1. Mission, Vision & Goal Block */}
-            <section className="py-20 container">
+            <section className="py-20 bg-[#f5f7fa]">
+                <div className="container">
                 <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+
+                    {/* Vision */}
                     <motion.div
-                        {...fadeIn}
-                        className="bg-gray-50 p-10 rounded-2xl border border-gray-100 shadow-sm flex flex-col"
+                        custom={0}
+                        variants={cardVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        whileHover={{ y: -3, boxShadow: "0 8px 24px rgba(0,0,0,0.07)" }}
+                        transition={{ type: "tween", duration: 0.22 }}
+                        className="bg-white p-10 rounded-2xl border border-gray-100 shadow-sm flex flex-col group cursor-default"
                     >
                         <div className="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mb-6">
                             <ShieldCheck className="text-primary-600 w-6 h-6" />
@@ -72,12 +92,24 @@ export default function AboutUs() {
                         <p className="text-gray-600 leading-relaxed text-lg italic flex-grow">
                             "A world in which every human being's life is equally valued irrespective of caste, gender or economic status."
                         </p>
+                        <div className="flex items-center gap-1 mt-6 text-primary-500 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                            <span className="text-xs font-semibold tracking-wide">Learn more</span>
+                            <ArrowRight
+                                className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-[3px]"
+                            />
+                        </div>
                     </motion.div>
 
+                    {/* Mission */}
                     <motion.div
-                        {...fadeIn}
-                        transition={{ duration: 0.6, delay: 0.2 }}
-                        className="bg-gray-50 p-10 rounded-2xl border border-gray-100 shadow-sm flex flex-col"
+                        custom={0.12}
+                        variants={cardVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        whileHover={{ y: -3, boxShadow: "0 8px 24px rgba(0,0,0,0.07)" }}
+                        transition={{ type: "tween", duration: 0.22 }}
+                        className="bg-white p-10 rounded-2xl border border-gray-100 shadow-sm flex flex-col group cursor-default"
                     >
                         <div className="w-12 h-12 bg-secondary-100 rounded-xl flex items-center justify-center mb-6">
                             <Activity className="text-secondary-600 w-6 h-6" />
@@ -86,12 +118,24 @@ export default function AboutUs() {
                         <p className="text-gray-600 leading-relaxed text-lg flex-grow">
                             "Making healthcare services affordable and accessible for rural communities across India by leveraging technology and grassroots outreach."
                         </p>
+                        <div className="flex items-center gap-1 mt-6 text-secondary-500 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                            <span className="text-xs font-semibold tracking-wide">Learn more</span>
+                            <ArrowRight
+                                className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-[3px]"
+                            />
+                        </div>
                     </motion.div>
 
+                    {/* Goal */}
                     <motion.div
-                        {...fadeIn}
-                        transition={{ duration: 0.6, delay: 0.3 }}
-                        className="bg-gray-50 p-10 rounded-2xl border border-gray-100 shadow-sm flex flex-col"
+                        custom={0.22}
+                        variants={cardVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        whileHover={{ y: -3, boxShadow: "0 8px 24px rgba(0,0,0,0.07)" }}
+                        transition={{ type: "tween", duration: 0.22 }}
+                        className="bg-white p-10 rounded-2xl border border-gray-100 shadow-sm flex flex-col group cursor-default"
                     >
                         <div className="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center mb-6">
                             <HeartHandshake className="text-amber-600 w-6 h-6" />
@@ -100,17 +144,31 @@ export default function AboutUs() {
                         <p className="text-gray-600 leading-relaxed text-lg flex-grow">
                             "To establish DigiSwasthya centers across India, especially in aspirational districts, becoming a trusted healthcare partner providing the right direction, information, and diagnosis."
                         </p>
+                        <div className="flex items-center gap-1 mt-6 text-amber-500 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                            <span className="text-xs font-semibold tracking-wide">Learn more</span>
+                            <ArrowRight
+                                className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-[3px]"
+                            />
+                        </div>
                     </motion.div>
+
+                </div>
                 </div>
             </section>
 
             {/* 2. How We Work (8 Service Pillars) */}
             <section className="py-24 bg-gray-50 border-y border-gray-100">
                 <div className="container">
-                    <div className="text-center max-w-3xl mx-auto mb-16">
+                    <motion.div
+                        initial={{ opacity: 0, y: 12 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, ease: "easeOut" }}
+                        className="text-center max-w-3xl mx-auto mb-16"
+                    >
                         <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-4 tracking-tight">How We Work</h2>
                         <p className="text-gray-600 text-lg font-medium">DigiSwasthya bridges the healthcare gap in underserved communities through a structured and technology-enabled support system.</p>
-                    </div>
+                    </motion.div>
 
                     <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
                         {[
@@ -119,6 +177,7 @@ export default function AboutUs() {
                                 icon: Megaphone,
                                 color: "text-blue-600",
                                 bg: "bg-blue-50",
+                                arrowColor: "text-blue-400",
                                 desc: "We conduct community outreach and health awareness initiatives to educate rural populations about preventive care and early detection."
                             },
                             {
@@ -126,6 +185,7 @@ export default function AboutUs() {
                                 icon: Info,
                                 color: "text-indigo-600",
                                 bg: "bg-indigo-50",
+                                arrowColor: "text-indigo-400",
                                 desc: "Our trained coordinators provide reliable health information and guidance, reducing misinformation and promoting informed decisions."
                             },
                             {
@@ -133,6 +193,7 @@ export default function AboutUs() {
                                 icon: Database,
                                 color: "text-purple-600",
                                 bg: "bg-purple-50",
+                                arrowColor: "text-purple-400",
                                 desc: "We assist in digitally recording patient health information to ensure continuity of care and better coordination with specialists."
                             },
                             {
@@ -140,6 +201,7 @@ export default function AboutUs() {
                                 icon: ClipboardList,
                                 color: "text-emerald-600",
                                 bg: "bg-emerald-50",
+                                arrowColor: "text-emerald-400",
                                 desc: "Basic health assessments are conducted at village centers to identify early symptoms and determine the need for further consultation."
                             },
                             {
@@ -147,6 +209,7 @@ export default function AboutUs() {
                                 icon: Stethoscope,
                                 color: "text-cyan-600",
                                 bg: "bg-cyan-50",
+                                arrowColor: "text-cyan-400",
                                 desc: "Through teleconsultation support, beneficiaries are connected with qualified medical professionals for specialist advice."
                             },
                             {
@@ -154,6 +217,7 @@ export default function AboutUs() {
                                 icon: Clock,
                                 color: "text-amber-600",
                                 bg: "bg-amber-50",
+                                arrowColor: "text-amber-400",
                                 desc: "By facilitating quicker access to professional consultation, we help reduce delays in identifying health conditions."
                             },
                             {
@@ -161,6 +225,7 @@ export default function AboutUs() {
                                 icon: ExternalLink,
                                 color: "text-orange-600",
                                 bg: "bg-orange-50",
+                                arrowColor: "text-orange-400",
                                 desc: "When necessary, we guide patients toward appropriate healthcare facilities or partner hospitals for advanced treatment."
                             },
                             {
@@ -168,24 +233,31 @@ export default function AboutUs() {
                                 icon: RefreshCcw,
                                 color: "text-rose-600",
                                 bg: "bg-rose-50",
+                                arrowColor: "text-rose-400",
                                 desc: "We support follow-up coordination to encourage adherence to prescribed treatment plans and monitor recovery progress."
                             }
                         ].map((item, i) => (
                             <motion.div
                                 key={i}
-                                initial={{ opacity: 0 }}
-                                whileInView={{ opacity: 1 }}
+                                custom={i * 0.05}
+                                variants={cardVariants}
+                                initial="hidden"
+                                whileInView="visible"
                                 viewport={{ once: true }}
-                                transition={{ delay: i * 0.05 }}
-                                className="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 transition-all duration-300 hover:shadow-md group"
+                                whileHover={{ y: -2, boxShadow: "0 8px 24px rgba(0,0,0,0.07)" }}
+                                transition={{ type: "tween", duration: 0.2 }}
+                                className="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 group cursor-default"
                             >
-                                <div className={`w-14 h-14 ${item.bg} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
+                                <div className={`w-14 h-14 ${item.bg} rounded-2xl flex items-center justify-center mb-6 transition-transform duration-200 group-hover:scale-[1.05]`}>
                                     <item.icon className={`${item.color} w-7 h-7`} />
                                 </div>
                                 <h4 className="text-lg font-black text-gray-900 mb-3 leading-tight">{item.title}</h4>
                                 <p className="text-gray-500 leading-relaxed text-sm font-medium">
                                     {item.desc}
                                 </p>
+                                <div className={`flex items-center gap-1 mt-5 ${item.arrowColor} opacity-0 group-hover:opacity-100 transition-opacity duration-200`}>
+                                    <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-[3px]" />
+                                </div>
                             </motion.div>
                         ))}
                     </div>
@@ -250,7 +322,7 @@ export default function AboutUs() {
             </section>
 
             {/* 4. Credentials & Legitimacy Block */}
-            <section className="py-20 bg-white">
+            <section className="py-20 bg-[#f5f7fa]">
                 <div className="container">
                     <div className="max-w-6xl mx-auto">
                         <div className="grid lg:grid-cols-2 gap-16 items-center border-b border-gray-100 pb-20">
@@ -340,7 +412,7 @@ export default function AboutUs() {
             </section>
 
             {/* 6. Transparency Micro-Section */}
-            <section className="py-20 bg-white">
+            <section className="py-20 bg-[#f5f7fa]">
                 <div className="container">
                     <motion.div
                         {...fadeIn}

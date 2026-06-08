@@ -28,7 +28,7 @@ const stories = [
 
 export function BeneficiaryStories() {
     return (
-        <section className="py-24 bg-white overflow-hidden">
+        <section className="py-24 bg-[#fdf8f3] overflow-hidden">
             <div className="container max-w-7xl">
                 {/* Header */}
                 <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
@@ -63,7 +63,7 @@ export function BeneficiaryStories() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: story.delay, duration: 0.8 }}
-                            className="group flex flex-col md:flex-row bg-slate-50 rounded-[40px] overflow-hidden border border-slate-100 transition-all duration-700"
+                            className="group flex flex-col md:flex-row bg-white rounded-[40px] overflow-hidden border border-[#e8ddd0] shadow-sm transition-all duration-700"
                         >
                             {/* Image Container */}
                             <div className="relative w-full md:w-2/5 aspect-[4/5] overflow-hidden">

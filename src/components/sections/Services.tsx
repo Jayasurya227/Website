@@ -46,7 +46,7 @@ export function Services() {
     ];
 
     return (
-        <section className="py-24 bg-white overflow-hidden" id="services">
+        <section className="py-24 bg-[#eef4f8] overflow-hidden" id="services">
             <div className="container max-w-7xl">
 
                 {/* Header */}
@@ -93,7 +93,7 @@ export function Services() {
                             viewport={{ once: true }}
                             transition={{ delay: service.delay }}
                             whileHover={{ y: -10 }}
-                            className="p-8 rounded-[32px] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl hover:shadow-primary-600/10 transition-all duration-500 group"
+                            className="p-8 rounded-[32px] bg-white border border-[#d5e5f0] hover:bg-white hover:shadow-2xl hover:shadow-primary-600/10 transition-all duration-500 group"
                         >
                             <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-transform group-hover:scale-110 duration-500 ${service.color}`}>
                                 {service.icon}

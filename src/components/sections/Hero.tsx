@@ -130,7 +130,7 @@ export function Hero() {
             </div>
 
             {/* Subtle Gradient bottom overlay for smooth transition to next section */}
-            <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-gray-900 to-transparent pointer-events-none" />
+            <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#f4f7f5] via-[#f4f7f5]/10 to-transparent pointer-events-none" />
         </section>
     );
 }

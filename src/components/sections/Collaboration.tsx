@@ -2,7 +2,7 @@ import { Handshake, Building2, HeartHandshake } from "lucide-react";
 
 export function Collaboration() {
     return (
-        <section className="py-20 bg-white">
+        <section className="py-20 bg-[#eef3ef]">
             <div className="container">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">Help us to fulfil our mission</h2>
@@ -33,7 +33,7 @@ export function Collaboration() {
 
 function CollabCard({ title, description, icon }: { title: string, description: string, icon: React.ReactNode }) {
     return (
-        <div className="bg-gray-50 p-8 rounded-xl border hover:shadow-lg transition-shadow">
+        <div className="bg-white p-8 rounded-xl border border-[#c8dac8] hover:shadow-lg transition-shadow">
             {icon}
             <h3 className="text-xl font-bold text-gray-900 mb-4">{title}</h3>
             <p className="text-gray-600 leading-relaxed text-sm">{description}</p>
