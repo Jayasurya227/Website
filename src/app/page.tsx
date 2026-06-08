@@ -17,7 +17,7 @@ export default function Home() {
   const { t } = useLanguage();
 
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className="min-h-screen bg-[#f4f7f5]">
       <Navbar />
       <Hero />
       <AwardSection />
@@ -29,7 +29,7 @@ export default function Home() {
       <TelemedicineCentres />
 
       {/* BMI Calculator Section */}
-      <section className="py-20 bg-gray-100">
+      <section className="py-20 bg-[#eef4f8]">
         <div className="container">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-black text-gray-900 tracking-tight">{t("bmi.title")}</h2>
@@ -41,7 +41,7 @@ export default function Home() {
       </section>
 
       {/* Social Media Follow Section */}
-      <section className="py-12 bg-white border-t">
+      <section className="py-12 bg-[#fdf8f3] border-t border-[#e8ddd0]">
         <div className="container text-center">
           <h3 className="text-xl font-bold text-gray-900 mb-6">{t("social.followTitle")}</h3>
           <div className="flex justify-center gap-6">

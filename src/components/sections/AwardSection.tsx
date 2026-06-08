@@ -8,9 +8,9 @@ export function AwardSection() {
     const { t } = useLanguage();
 
     return (
-        <section className="py-16 bg-white">
+        <section className="py-16 bg-[#fdf8f3]">
             <div className="container mx-auto px-4">
-                <div className="flex flex-col lg:flex-row items-center gap-12 bg-gray-50 rounded-3xl overflow-hidden shadow-xl border border-gray-100">
+                <div className="flex flex-col lg:flex-row items-center gap-12 bg-white rounded-3xl overflow-hidden shadow-xl border border-[#e8ddd0]">
                     {/* Image Side */}
                     <div className="w-full lg:w-3/5 relative min-h-[300px] md:min-h-[450px] bg-gray-200/50">
                         <Image

@@ -41,7 +41,7 @@ const centres = [
 
 export function TelemedicineCentres() {
     return (
-        <section className="py-24 bg-white relative overflow-hidden">
+        <section className="py-24 bg-[#eef4f8] relative overflow-hidden">
             {/* Subtle background element */}
             <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none"
                 style={{ backgroundImage: `radial-gradient(#0d9488 0.5px, transparent 0.5px)`, backgroundSize: '32px 32px' }} />
@@ -67,7 +67,7 @@ export function TelemedicineCentres() {
                             className="group relative bg-white p-8 rounded-[2.5rem] border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_60px_rgba(var(--primary-rgb,13,148,136),0.12)] hover:border-primary-200 transition-all duration-500 flex flex-col h-full"
                         >
                             {/* Accent indicator */}
-                            <div className="absolute top-8 right-8 flex items-center gap-1.5 bg-gray-50 px-2 py-1 rounded-full">
+                            <div className="absolute top-8 right-8 flex items-center gap-1.5 bg-white px-2 py-1 rounded-full border border-[#d5e5f0]">
                                 <span className="relative flex h-1.5 w-1.5">
                                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                                     <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-green-500"></span>
@@ -91,7 +91,7 @@ export function TelemedicineCentres() {
 
                                 <div className="space-y-4 mb-8">
                                     <div className="flex items-start gap-3">
-                                        <div className="mt-1 flex-shrink-0 p-1 bg-gray-50 rounded-md">
+                                        <div className="mt-1 flex-shrink-0 p-1 bg-[#eef4f8] rounded-md">
                                             <MapPin className="h-3.5 w-3.5 text-gray-400" />
                                         </div>
                                         <p className="text-gray-600 text-sm leading-relaxed">
@@ -99,13 +99,13 @@ export function TelemedicineCentres() {
                                         </p>
                                     </div>
                                     <div className="flex items-center gap-3">
-                                        <div className="flex-shrink-0 p-1 bg-gray-50 rounded-md">
+                                        <div className="flex-shrink-0 p-1 bg-[#eef4f8] rounded-md">
                                             <Phone className="h-3.5 w-3.5 text-gray-400" />
                                         </div>
                                         <span className="text-sm text-gray-500 font-medium">{centre.phone}</span>
                                     </div>
                                     <div className="flex items-center gap-3 text-sm text-gray-500">
-                                        <div className="flex-shrink-0 p-1 bg-gray-50 rounded-md">
+                                        <div className="flex-shrink-0 p-1 bg-[#eef4f8] rounded-md">
                                             <Clock className="h-3.5 w-3.5 text-gray-400" />
                                         </div>
                                         <span className="text-sm text-gray-500 font-medium">9:00 AM - 6:00 PM</span>

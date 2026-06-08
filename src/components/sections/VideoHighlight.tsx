@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export function VideoHighlight() {
     return (
-        <section className="py-16 bg-white overflow-hidden">
+        <section className="py-16 bg-[#eef3ef] overflow-hidden">
             <div className="container mx-auto px-4">
                 <div className="max-w-3xl mx-auto space-y-6">
                     <motion.div
@@ -21,7 +21,7 @@ export function VideoHighlight() {
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
-                        className="relative aspect-video rounded-3xl overflow-hidden shadow-xl border-4 border-gray-50 bg-gray-100 group"
+                        className="relative aspect-video rounded-3xl overflow-hidden shadow-xl border-4 border-[#d5e3d8] bg-[#e6ede8] group"
                     >
                         <iframe
                             className="absolute inset-0 w-full h-full"

@@ -78,7 +78,7 @@ export function MediaImpact() {
     const currentTestimonials = testimonials.slice(page * itemsPerPage, (page + 1) * itemsPerPage);
 
     return (
-        <section className="py-12 bg-white" id="testimonials">
+        <section className="py-12 bg-[#f0f4f9]" id="testimonials">
             <div className="container mx-auto px-4 relative">
                 {/* Header */}
                 <div className="text-center mb-10">
@@ -96,14 +96,14 @@ export function MediaImpact() {
                     {/* Navigation Arrows */}
                     <button
                         onClick={handlePrev}
-                        className="absolute -left-4 md:-left-12 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white/90 shadow-lg text-primary-600 hover:bg-primary-600 hover:text-white transition-all transform hover:scale-110"
+                        className="absolute -left-4 md:-left-12 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white shadow-lg text-primary-600 hover:bg-primary-600 hover:text-white transition-all transform hover:scale-110"
                         aria-label="Previous testimonials"
                     >
                         <ChevronLeft className="h-6 w-6" />
                     </button>
                     <button
                         onClick={handleNext}
-                        className="absolute -right-4 md:-right-12 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white/90 shadow-lg text-primary-600 hover:bg-primary-600 hover:text-white transition-all transform hover:scale-110"
+                        className="absolute -right-4 md:-right-12 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white shadow-lg text-primary-600 hover:bg-primary-600 hover:text-white transition-all transform hover:scale-110"
                         aria-label="Next testimonials"
                     >
                         <ChevronRight className="h-6 w-6" />
@@ -123,7 +123,7 @@ export function MediaImpact() {
                                 {currentTestimonials.map((item, i) => (
                                     <div
                                         key={i}
-                                        className="flex flex-col items-center bg-gray-50/50 p-6 rounded-3xl border border-gray-100 shadow-sm"
+                                        className="flex flex-col items-center bg-white p-6 rounded-3xl border border-[#dce6f0] shadow-sm"
                                     >
                                         {/* Profile Placeholder / Image (Decreased Size) */}
                                         <div className="w-14 h-14 mb-4 rounded-full bg-gray-100 flex items-center justify-center border-2 border-white shadow-sm overflow-hidden grayscale">
