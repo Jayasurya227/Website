@@ -21,6 +21,7 @@ export function Navbar() {
     ];
 
     const resourcesLinks = [
+        { name: t("nav.healthTools"), href: "/health-tools" },
         { name: t("nav.media"), href: "/media" },
         { name: t("nav.privacy"), href: "/privacy-policy" },
         { name: t("nav.terms"), href: "/terms-and-conditions" },
