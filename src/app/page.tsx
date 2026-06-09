@@ -8,7 +8,6 @@ import { BeneficiaryStories } from "@/components/sections/BeneficiaryStories";
 import { Collaboration } from "@/components/sections/Collaboration";
 import { MediaImpact } from "@/components/sections/MediaImpact";
 import { TelemedicineCentres } from "@/components/sections/TelemedicineCentres";
-import { BMICalculator } from "@/components/features/BMICalculator";
 import { AwardSection } from "@/components/sections/AwardSection";
 import { VideoHighlight } from "@/components/sections/VideoHighlight";
 import { useLanguage } from "@/context/LanguageContext";
@@ -27,18 +26,6 @@ export default function Home() {
       <BeneficiaryStories />
       <Collaboration />
       <TelemedicineCentres />
-
-      {/* BMI Calculator Section */}
-      <section className="py-20 bg-[#eef4f8]">
-        <div className="container">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-black text-gray-900 tracking-tight">{t("bmi.title")}</h2>
-            <p className="text-gray-600 mt-3 text-lg max-w-2xl mx-auto">{t("bmi.subtitle")}</p>
-            <p className="text-[10px] text-gray-400 mt-2 italic font-medium">{t("bmi.disclaimer")}</p>
-          </div>
-          <BMICalculator />
-        </div>
-      </section>
 
       {/* Social Media Follow Section */}
       <section className="py-12 bg-[#fdf8f3] border-t border-[#e8ddd0]">
