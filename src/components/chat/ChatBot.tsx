@@ -12,7 +12,6 @@ type ChatOption = {
 
 const CHAT_DATA: Record<string, ChatOption[]> = {
     initial: [
-        { label: 'Patient' },
         { label: 'Donor' },
         { label: 'General Info' },
     ],

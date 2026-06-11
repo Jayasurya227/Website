@@ -4,24 +4,30 @@ import { motion } from "framer-motion";
 
 export function VideoHighlight() {
     return (
-        <section className="py-16 bg-[#eef3ef] overflow-hidden">
+        <section className="py-16 bg-gray-50">
             <div className="container mx-auto px-4">
-                <div className="max-w-3xl mx-auto space-y-6">
+                <div className="grid lg:grid-cols-2 gap-12 items-center">
+
+                    {/* Left — text */}
+                    <div>
+                        <div className="inline-flex items-center gap-2 text-primary-600 text-sm font-semibold uppercase tracking-widest mb-4">
+                            <span className="h-px w-6 bg-primary-600" /> Watch Our Story
+                        </div>
+                        <h2 className="font-serif text-3xl md:text-4xl font-bold text-gray-900 leading-snug mb-4">
+                            See DigiSwasthya in action
+                        </h2>
+                        <p className="text-gray-500 leading-relaxed">
+                            Watch how we are bringing specialist healthcare to the doorstep of rural communities across India through technology-enabled telemedicine centers.
+                        </p>
+                    </div>
+
+                    {/* Right — video */}
                     <motion.div
-                        initial={{ opacity: 0, y: 10 }}
+                        initial={{ opacity: 0, y: 12 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-center"
-                    >
-                        <h2 className="text-2xl font-black text-gray-900 tracking-tight">FEATURED VIDEO</h2>
-                    </motion.div>
-
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
-                        className="relative aspect-video rounded-3xl overflow-hidden shadow-xl border-4 border-[#d5e3d8] bg-[#e6ede8] group"
+                        transition={{ duration: 0.6, ease: "easeOut" }}
+                        className="relative aspect-video rounded-xl overflow-hidden shadow-lg bg-black"
                     >
                         <iframe
                             className="absolute inset-0 w-full h-full"
@@ -31,6 +37,7 @@ export function VideoHighlight() {
                             allowFullScreen
                         ></iframe>
                     </motion.div>
+
                 </div>
             </div>
         </section>

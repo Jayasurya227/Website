@@ -2,9 +2,7 @@
 
 import { useRef, useEffect } from "react";
 import { motion, useInView, useSpring, useTransform } from "framer-motion";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import NextImage from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 
 function Counter({ value, suffix = "" }: { value: number; suffix?: string }) {
@@ -33,104 +31,100 @@ export function Hero() {
     ];
 
     return (
-        <section className="relative min-h-[700px] w-full flex items-center justify-center overflow-hidden bg-gray-900">
-            {/* Visual Element: Background Image with Overlay */}
+        <section className="relative min-h-[680px] w-full flex items-center overflow-hidden bg-gray-900">
+            {/* Background Photo */}
             <div
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                style={{
-                    backgroundImage: `url('/images/hero-new.png')`,
-                }}
+                style={{ backgroundImage: `url('/images/hero-new.png')` }}
             >
-                {/* Soft dark overlay for text readability */}
-                <div className="absolute inset-0 bg-black/60 backdrop-blur-[1px]" />
-
-                {/* Fallback pattern in case image fails */}
-                <div className="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:20px_20px]" />
+                {/* Gradient overlay — stronger on left for text, lighter on right to show photo */}
+                <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-black/20" />
             </div>
 
-            {/* Content Container */}
-            <div className="relative z-10 container mx-auto px-4 py-20 flex flex-col items-center text-center">
+            {/* Content — Left aligned like CRY India / Smile Foundation */}
+            <div className="relative z-10 container mx-auto px-6 py-24">
+                <div className="max-w-2xl">
 
-                {/* Headline: Fade-in on load */}
-                <motion.h1
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="text-4xl md:text-6xl lg:text-7xl font-bold text-white max-w-4xl leading-tight tracking-tight mb-6"
-                >
-                    {t("hero.titlePart1")}{" "}
-                    <span className="text-secondary-400 font-extrabold italic">
-                        {t("hero.titleHighlight")}
-                    </span>{" "}
-                    {t("hero.titlePart2")}
-                </motion.h1>
-
-                {/* Subheading: Clear and human */}
-                <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                    className="text-lg md:text-xl text-gray-200 max-w-2xl font-light mb-10 leading-relaxed"
-                >
-                    {t("hero.subtitle")}
-                </motion.p>
-
-                {/* Call-to-Action Buttons */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-                    className="flex flex-col sm:flex-row gap-5 mb-16"
-                >
-                    <motion.div whileHover={{ scale: 1.05 }} className="transition-all duration-300">
-                        <Button
-                            variant="primary"
-                            size="lg"
-                            className="bg-secondary-500 hover:bg-secondary-600 text-white text-lg font-semibold px-10 py-7 rounded-full shadow-lg shadow-secondary-500/20"
-                            asChild
-                        >
-                            <Link href="/donate">
-                                {t("nav.donate")}
-                            </Link>
-                        </Button>
+                    {/* Eyebrow label */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 12 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
+                        className="inline-flex items-center gap-2 mb-5"
+                    >
+                        <span className="h-px w-8 bg-secondary-400" />
+                        <span className="text-secondary-400 text-sm font-semibold uppercase tracking-widest">
+                            DigiSwasthya Foundation
+                        </span>
                     </motion.div>
 
-                    <motion.div whileHover={{ scale: 1.05 }} className="transition-all duration-300">
-                        <Button
-                            variant="outline"
-                            size="lg"
-                            className="text-white border-white/40 hover:bg-white/10 text-lg font-semibold px-10 py-7 rounded-full backdrop-blur-sm shadow-xl"
-                            asChild
-                        >
-                            <a href="/contact-us">
-                                {t("hero.bookConsultation")}
-                            </a>
-                        </Button>
-                    </motion.div>
-                </motion.div>
+                    {/* Main headline — Playfair serif, editorial */}
+                    <motion.h1
+                        initial={{ opacity: 0, y: 16 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
+                        className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.15] mb-6"
+                    >
+                        {t("hero.titlePart1")}{" "}
+                        <span className="text-secondary-400">
+                            {t("hero.titleHighlight")}
+                        </span>{" "}
+                        {t("hero.titlePart2")}
+                    </motion.h1>
 
-                {/* Impact Statistics: Horizontal layout with animated counters */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 1, delay: 0.6 }}
-                    className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 w-full max-w-5xl border-t border-white/10 pt-12"
-                >
+                    {/* Subtitle */}
+                    <motion.p
+                        initial={{ opacity: 0, y: 16 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+                        className="text-base md:text-lg text-gray-200 font-normal mb-10 leading-relaxed max-w-xl"
+                    >
+                        {t("hero.subtitle")}
+                    </motion.p>
+
+                    {/* CTAs */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 16 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
+                        className="flex flex-col sm:flex-row gap-4"
+                    >
+                        <Link
+                            href="/donate"
+                            className="inline-block bg-secondary-500 hover:bg-secondary-600 text-white font-semibold text-base px-8 py-3.5 rounded-md transition-colors duration-200"
+                        >
+                            {t("nav.donate")}
+                        </Link>
+                        <a
+                            href="/contact-us"
+                            className="inline-block bg-white/10 hover:bg-white/20 border border-white/30 text-white font-semibold text-base px-8 py-3.5 rounded-md transition-colors duration-200"
+                        >
+                            {t("hero.bookConsultation")}
+                        </a>
+                    </motion.div>
+                </div>
+            </div>
+
+            {/* Stats bar — anchored to bottom, clean separator */}
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+                className="absolute bottom-0 left-0 right-0 z-10 bg-black/40 backdrop-blur-sm border-t border-white/10"
+            >
+                <div className="container mx-auto px-6 py-5 grid grid-cols-2 md:grid-cols-4 gap-6">
                     {stats.map((stat, i) => (
-                        <div key={i} className="flex flex-col items-center">
-                            <h3 className="text-3xl md:text-4xl font-black text-secondary-400 mb-1">
+                        <div key={i} className="text-center md:text-left">
+                            <div className="text-2xl md:text-3xl font-bold text-secondary-400">
                                 <Counter value={stat.value} suffix={stat.suffix} />
-                            </h3>
-                            <p className="text-sm md:text-base text-gray-400 font-medium uppercase tracking-wider">
+                            </div>
+                            <div className="text-xs text-gray-300 uppercase tracking-wide mt-0.5">
                                 {stat.label}
-                            </p>
+                            </div>
                         </div>
                     ))}
-                </motion.div>
-            </div>
-
-            {/* Subtle Gradient bottom overlay for smooth transition to next section */}
-            <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#f4f7f5] via-[#f4f7f5]/10 to-transparent pointer-events-none" />
+                </div>
+            </motion.div>
         </section>
     );
 }
