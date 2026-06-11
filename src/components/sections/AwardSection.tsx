@@ -28,9 +28,9 @@ export function AwardSection() {
                             initial={{ opacity: 0, x: 20 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
-                            className="inline-block px-4 py-1.5 rounded-full bg-primary-100 text-primary-700 text-xs font-bold uppercase tracking-wider"
+                            className="inline-flex items-center gap-2 text-primary-600 text-sm font-semibold uppercase tracking-widest"
                         >
-                            {t("award.badge")}
+                            <span className="h-px w-6 bg-primary-600" /> {t("award.badge")}
                         </motion.div>
 
                         <motion.h2
@@ -38,7 +38,7 @@ export function AwardSection() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.1 }}
-                            className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight"
+                            className="font-serif text-3xl md:text-4xl font-bold text-gray-900 leading-tight"
                         >
                             {t("award.titlePart1")}{" "}
                             <span className="text-primary-600">

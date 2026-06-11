@@ -41,88 +41,64 @@ const centres = [
 
 export function TelemedicineCentres() {
     return (
-        <section className="py-24 bg-[#eef4f8] relative overflow-hidden">
-            {/* Subtle background element */}
-            <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none"
-                style={{ backgroundImage: `radial-gradient(#0d9488 0.5px, transparent 0.5px)`, backgroundSize: '32px 32px' }} />
-
-            <div className="container relative z-10 px-4">
-                <div className="max-w-3xl mx-auto text-center mb-20">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-50 text-primary-700 text-[10px] font-bold uppercase tracking-widest mb-6 border border-primary-100 shadow-sm">
-                        <Navigation className="h-3 w-3" />
-                        Our Network
+        <section className="py-20 bg-gray-50">
+            <div className="container px-4">
+                <div className="max-w-2xl mb-14">
+                    <div className="inline-flex items-center gap-2 text-primary-600 text-sm font-semibold uppercase tracking-widest mb-4">
+                        <span className="h-px w-6 bg-primary-600" /> Our Network
                     </div>
-                    <h2 className="text-3xl md:text-5xl font-black text-gray-900 tracking-tight mb-6">
-                        Find <span className="text-primary-600">DigiSwasthya</span> Telemedicine Centre Nearby
+                    <h2 className="font-serif text-3xl md:text-4xl font-bold text-gray-900 leading-snug">
+                        Find a <span className="text-primary-600">DigiSwasthya</span> Centre Near You
                     </h2>
-                    <p className="text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto font-medium">
+                    <p className="mt-4 text-gray-500 leading-relaxed">
                         Bringing quality healthcare closer to your home. Locate our technology-enabled health centres across India.
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {centres.map((centre, i) => (
                         <div
                             key={i}
-                            className="group relative bg-white p-8 rounded-[2.5rem] border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_60px_rgba(var(--primary-rgb,13,148,136),0.12)] hover:border-primary-200 transition-all duration-500 flex flex-col h-full"
+                            className="bg-white border border-gray-100 hover:border-primary-200 hover:shadow-md transition-all duration-300 p-7 rounded-xl flex flex-col"
                         >
-                            {/* Accent indicator */}
-                            <div className="absolute top-8 right-8 flex items-center gap-1.5 bg-white px-2 py-1 rounded-full border border-[#d5e5f0]">
-                                <span className="relative flex h-1.5 w-1.5">
-                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-green-500"></span>
-                                </span>
-                                <span className="text-[9px] font-black text-gray-500 uppercase tracking-wider">Active</span>
-                            </div>
-
-                            <div className="mb-6 p-2.5 bg-primary-50 w-fit rounded-xl group-hover:bg-primary-600 group-hover:text-white transition-all duration-300">
-                                <MapPin className="h-4 w-4 text-primary-600 group-hover:text-white transition-colors" />
-                            </div>
-
-                            <div className="flex-grow">
-                                <div className="flex flex-col gap-1 mb-5">
-                                    <span className="text-[10px] font-black text-primary-600/60 uppercase tracking-widest">
+                            <div className="flex items-start justify-between mb-4">
+                                <div>
+                                    <span className="text-xs font-semibold text-primary-600 uppercase tracking-wider">
                                         {centre.type}
                                     </span>
-                                    <h4 className="text-xl font-bold text-gray-900 leading-tight">
+                                    <h4 className="text-lg font-semibold text-gray-900 mt-1">
                                         {centre.name}
                                     </h4>
                                 </div>
+                                <span className="flex h-2 w-2 mt-2 flex-shrink-0">
+                                    <span className="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-green-400 opacity-75"></span>
+                                    <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                                </span>
+                            </div>
 
-                                <div className="space-y-4 mb-8">
-                                    <div className="flex items-start gap-3">
-                                        <div className="mt-1 flex-shrink-0 p-1 bg-[#eef4f8] rounded-md">
-                                            <MapPin className="h-3.5 w-3.5 text-gray-400" />
-                                        </div>
-                                        <p className="text-gray-600 text-sm leading-relaxed">
-                                            {centre.address}
-                                        </p>
-                                    </div>
-                                    <div className="flex items-center gap-3">
-                                        <div className="flex-shrink-0 p-1 bg-[#eef4f8] rounded-md">
-                                            <Phone className="h-3.5 w-3.5 text-gray-400" />
-                                        </div>
-                                        <span className="text-sm text-gray-500 font-medium">{centre.phone}</span>
-                                    </div>
-                                    <div className="flex items-center gap-3 text-sm text-gray-500">
-                                        <div className="flex-shrink-0 p-1 bg-[#eef4f8] rounded-md">
-                                            <Clock className="h-3.5 w-3.5 text-gray-400" />
-                                        </div>
-                                        <span className="text-sm text-gray-500 font-medium">9:00 AM - 6:00 PM</span>
-                                    </div>
+                            <div className="space-y-2.5 mb-6 flex-grow">
+                                <div className="flex items-start gap-2.5">
+                                    <MapPin className="h-4 w-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                                    <p className="text-gray-500 text-sm leading-relaxed">{centre.address}</p>
+                                </div>
+                                <div className="flex items-center gap-2.5">
+                                    <Phone className="h-4 w-4 text-gray-400 flex-shrink-0" />
+                                    <span className="text-sm text-gray-500">{centre.phone}</span>
+                                </div>
+                                <div className="flex items-center gap-2.5">
+                                    <Clock className="h-4 w-4 text-gray-400 flex-shrink-0" />
+                                    <span className="text-sm text-gray-500">9:00 AM – 6:00 PM</span>
                                 </div>
                             </div>
 
-                            <Button
-                                asChild
-                                variant="outline"
-                                className="w-full h-13 rounded-2xl border-gray-200 hover:border-primary-600 hover:bg-primary-600 hover:text-white transition-all duration-300 font-black group/btn shadow-sm text-xs uppercase tracking-widest"
+                            <a
+                                href={centre.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 text-sm font-semibold border-t border-gray-100 pt-4 transition-colors"
                             >
-                                <a href={centre.link} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
-                                    View Location
-                                    <ExternalLink className="h-4 w-4 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
-                                </a>
-                            </Button>
+                                View on Map <ExternalLink className="h-3.5 w-3.5" />
+                            </a>
                         </div>
                     ))}
                 </div>
@@ -130,4 +106,3 @@ export function TelemedicineCentres() {
         </section>
     );
 }
-

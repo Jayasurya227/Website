@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { DM_Sans, Lora } from "next/font/google";
 import { AccessibilityToolbar } from "@/components/features/AccessibilityToolbar";
 import { TranslationWidget } from "@/components/ai/TranslationWidget";
 import ChatBot from "@/components/chat/ChatBot";
@@ -7,7 +7,8 @@ import "./globals.css";
 
 import { LanguageProvider } from "@/context/LanguageContext";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const dmSans = DM_Sans({ subsets: ["latin"], variable: "--font-sans" });
+const lora = Lora({ subsets: ["latin"], variable: "--font-serif" });
 
 export const metadata: Metadata = {
   title: "DigiSwasthya Foundation | Accessible Healthcare",
@@ -21,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} font-sans`}>
+      <body className={`${dmSans.variable} ${lora.variable} font-sans`}>
         <LanguageProvider>
           {children}
           <AccessibilityToolbar />

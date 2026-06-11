@@ -18,56 +18,56 @@ export function Testimonials() {
     ];
 
     return (
-        <section className="py-12 bg-gray-50 overflow-hidden">
+        <section className="py-16 bg-primary-50">
             <div className="container mx-auto px-4">
-                <div className="flex flex-col items-center">
-                    <div className="mb-8 px-8 py-2 bg-primary-600 text-white rounded-full font-bold shadow-lg uppercase tracking-widest text-sm">
-                        Testimonials
+                {/* Header */}
+                <div className="max-w-2xl mb-10">
+                    <div className="inline-flex items-center gap-2 text-primary-600 text-sm font-semibold uppercase tracking-widest mb-4">
+                        <span className="h-px w-6 bg-primary-600" /> Patient Stories
                     </div>
+                    <h2 className="font-serif text-3xl md:text-4xl font-bold text-gray-900 leading-snug">
+                        Lives we have touched
+                    </h2>
+                    <p className="mt-3 text-gray-500 leading-relaxed">
+                        Real people, real impact — stories from the communities we serve.
+                    </p>
+                </div>
 
-                    <div className="relative w-full max-w-md mx-auto">
-                        <div className="overflow-hidden rounded-[2rem] shadow-[0_15px_40px_rgba(0,0,0,0.1)] border-4 border-white bg-white">
-                            <motion.div
-                                className="flex"
-                                animate={{
-                                    x: [
-                                        "-900%",
-                                        "-800%",
-                                        "-700%",
-                                        "-600%",
-                                        "-500%",
-                                        "-400%",
-                                        "-300%",
-                                        "-200%",
-                                        "-100%",
-                                        "0%",
-                                        "-900%"
-                                    ]
-                                }}
-                                transition={{
-                                    duration: 50,
-                                    times: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
-                                    ease: "easeInOut",
-                                    repeat: Infinity,
-                                }}
+                {/* Auto-scrolling testimonial images */}
+                <div className="relative w-full overflow-hidden rounded-xl">
+                    <motion.div
+                        className="flex gap-4"
+                        animate={{
+                            x: [
+                                "0%",
+                                "-100%",
+                            ]
+                        }}
+                        transition={{
+                            duration: 40,
+                            ease: "linear",
+                            repeat: Infinity,
+                        }}
+                        style={{ width: `${images.length * 2 * 220}px` }}
+                    >
+                        {[...images, ...images].map((src, i) => (
+                            <div
+                                key={i}
+                                className="flex-shrink-0 w-48 h-48 rounded-xl overflow-hidden border-2 border-white shadow-sm"
                             >
-                                {images.map((src, i) => (
-                                    <div key={i} className="flex-shrink-0 w-full aspect-square relative">
-                                        <Image
-                                            src={src}
-                                            alt={`Testimonial ${i + 1}`}
-                                            fill
-                                            className="object-contain"
-                                            priority={i === 0}
-                                        />
-                                    </div>
-                                ))}
-                            </motion.div>
-                        </div>
-                    </div>
+                                <Image
+                                    src={src}
+                                    alt={`Patient testimonial ${(i % images.length) + 1}`}
+                                    width={192}
+                                    height={192}
+                                    className="object-cover w-full h-full"
+                                    priority={i === 0}
+                                />
+                            </div>
+                        ))}
+                    </motion.div>
                 </div>
             </div>
         </section>
     );
 }
-

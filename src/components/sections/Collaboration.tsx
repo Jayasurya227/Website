@@ -1,29 +1,37 @@
-import { Handshake, Building2, HeartHandshake } from "lucide-react";
+import React from "react";
 
 export function Collaboration() {
     return (
-        <section className="py-20 bg-[#eef3ef]">
+        <section className="py-20 bg-white">
             <div className="container">
-                <div className="text-center mb-16">
-                    <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">Help us to fulfil our mission</h2>
-                    <p className="mt-4 text-lg text-gray-600">Here are some of the ways you can collaborate</p>
+                {/* Header */}
+                <div className="max-w-2xl mb-14">
+                    <div className="inline-flex items-center gap-2 text-primary-600 text-sm font-semibold uppercase tracking-widest mb-4">
+                        <span className="h-px w-6 bg-primary-600" /> Partner With Us
+                    </div>
+                    <h2 className="font-serif text-3xl md:text-4xl font-bold text-gray-900 leading-snug">
+                        Help us fulfil our mission
+                    </h2>
+                    <p className="mt-4 text-gray-500 leading-relaxed">
+                        Here are some of the ways you can collaborate with DigiSwasthya Foundation.
+                    </p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <CollabCard
+                        number="01"
                         title="Impact Investors"
-                        icon={<Building2 className="h-10 w-10 text-primary-600 mb-4" />}
-                        description="We are looking for social/ impact investors to provide capital and guidance to us to scale up. Apart from patient capital, we seek their know-how in emerging medical technologies and their experiences in implementing public-private partnerships. Comprehensive timely MIS is provided that helps investors to assess the social impact."
+                        description="We are looking for social/impact investors to provide capital and guidance to scale up. Apart from patient capital, we seek know-how in emerging medical technologies and experiences in implementing public-private partnerships."
                     />
                     <CollabCard
+                        number="02"
                         title="Centre Sponsors"
-                        icon={<Handshake className="h-10 w-10 text-primary-600 mb-4" />}
-                        description="We are seeking sponsors to fund the expansion into the rural areas/aspirational districts of their choice where they have significant operations and business. The center can be co-branded with the sponsoring brand. By partnering with us, sponsors can make a meaningful social impact while strengthening their brand presence in underserved regions."
+                        description="We are seeking sponsors to fund expansion into rural areas and aspirational districts of their choice. The center can be co-branded with the sponsoring brand, making a meaningful social impact while strengthening your brand presence."
                     />
                     <CollabCard
+                        number="03"
                         title="Campaign Sponsors"
-                        icon={<HeartHandshake className="h-10 w-10 text-primary-600 mb-4" />}
-                        description="Companies, trusts, and individuals with a thrust to sponsor specific interventions like breast care detections, girls screening programs for anemia, newborn baby screening programs, diabetic screening, heart screening, etc. A transparent mechanism is implemented wherein the providing organization sends the bill directly to the sponsor."
+                        description="Companies, trusts, and individuals with a thrust to sponsor specific interventions like breast care detections, girls screening for anemia, newborn baby screening, diabetic screening, and heart screening programs."
                     />
                 </div>
             </div>
@@ -31,12 +39,14 @@ export function Collaboration() {
     );
 }
 
-function CollabCard({ title, description, icon }: { title: string, description: string, icon: React.ReactNode }) {
+function CollabCard({ number, title, description }: { number: string; title: string; description: string }) {
     return (
-        <div className="bg-white p-8 rounded-xl border border-[#c8dac8] hover:shadow-lg transition-shadow">
-            {icon}
-            <h3 className="text-xl font-bold text-gray-900 mb-4">{title}</h3>
-            <p className="text-gray-600 leading-relaxed text-sm">{description}</p>
+        <div className="group border-t-2 border-gray-100 hover:border-primary-500 pt-7 transition-colors duration-300">
+            <div className="text-5xl font-serif font-bold text-gray-300 group-hover:text-primary-300 transition-colors duration-300 mb-4 leading-none">
+                {number}
+            </div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-3">{title}</h3>
+            <p className="text-gray-500 leading-relaxed text-sm">{description}</p>
         </div>
     );
 }
