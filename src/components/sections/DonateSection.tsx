@@ -41,6 +41,22 @@ export function DonateSection() {
                             <p className="text-sm text-gray-600">
                                 <span className="font-semibold">{t("donateSection.upiLabel")}:</span> digiswasthya@yesbank
                             </p>
+                            <p className="text-sm text-gray-600 pt-1">
+                                To view images of the impact that you can contribute to, kindly visit:{" "}
+                                <a
+                                    href="https://linktr.ee/DigiSwasthya"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-1 text-primary-700 font-semibold underline underline-offset-2 hover:text-primary-900 transition-colors duration-150"
+                                >
+                                    linktr.ee/DigiSwasthya
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                                        <polyline points="15 3 21 3 21 9" />
+                                        <line x1="10" y1="14" x2="21" y2="3" />
+                                    </svg>
+                                </a>
+                            </p>
                         </div>
 
                         {/* 80G Badge */}

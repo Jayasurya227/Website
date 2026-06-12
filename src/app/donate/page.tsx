@@ -927,22 +927,57 @@ export default function DonatePage() {
         <main className="min-h-screen bg-white">
             <Navbar />
 
-            {/* ── Hero Strip — unchanged ── */}
-            <div className="bg-primary-900 py-14 px-6">
+            {/* ── Hero Strip ── */}
+            <div className="bg-primary-900 py-5 px-6">
                 <div className="max-w-6xl mx-auto">
-                    <div className="inline-flex items-center gap-2 text-secondary-400 text-xs font-semibold uppercase tracking-widest mb-4">
-                        <span className="h-px w-6 bg-secondary-400" /> Support DigiSwasthya Foundation
-                    </div>
-                    <h1 className="font-serif text-3xl md:text-5xl font-bold text-white leading-tight mb-4">
-                        Every Rupee Saves a Life
-                    </h1>
-                    <p className="text-primary-300 text-base md:text-lg max-w-2xl leading-relaxed mb-8">
-                        Help us bring quality healthcare to underserved communities across rural India.
-                    </p>
-                    <div className="flex flex-wrap gap-10 border-t border-primary-800 pt-8">
-                        <div><div className="text-2xl font-bold text-white">50,000+</div><div className="text-xs text-primary-400 uppercase tracking-wide mt-1">Lives Impacted</div></div>
-                        <div><div className="text-2xl font-bold text-white">120+</div><div className="text-xs text-primary-400 uppercase tracking-wide mt-1">Villages Reached</div></div>
-                        <div><div className="text-2xl font-bold text-secondary-400">80G</div><div className="text-xs text-primary-400 uppercase tracking-wide mt-1">Tax Exempt</div></div>
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+
+                        {/* Left — existing content */}
+                        <div>
+                            <div className="inline-flex items-center gap-2 text-secondary-400 text-xs font-semibold uppercase tracking-widest mb-4">
+                                <span className="h-px w-6 bg-secondary-400" /> Support DigiSwasthya Foundation
+                            </div>
+                            <h1 className="font-serif text-3xl md:text-5xl font-bold text-white leading-tight mb-4">
+                                Every Rupee Saves a Life
+                            </h1>
+                            <p className="text-primary-300 text-base md:text-lg max-w-2xl leading-relaxed mb-8">
+                                Help us bring quality healthcare to underserved communities across rural India.
+                            </p>
+                            <div className="flex flex-wrap gap-10 border-t border-primary-800 pt-8">
+                                <div><div className="text-2xl font-bold text-white">50,000+</div><div className="text-xs text-primary-400 uppercase tracking-wide mt-1">Lives Impacted</div></div>
+                                <div><div className="text-2xl font-bold text-white">120+</div><div className="text-xs text-primary-400 uppercase tracking-wide mt-1">Villages Reached</div></div>
+                                <div><div className="text-2xl font-bold text-secondary-400">80G</div><div className="text-xs text-primary-400 uppercase tracking-wide mt-1">Tax Exempt</div></div>
+                            </div>
+                        </div>
+
+                        {/* Right — Linktree impact link */}
+                        <div className="flex flex-col items-start lg:items-end justify-center">
+                            <div className="bg-white/5 border border-white/10 rounded-2xl px-8 py-8 backdrop-blur-sm max-w-sm w-full">
+                                <p className="text-primary-300 text-sm font-medium uppercase tracking-widest mb-3">See Our Impact</p>
+                                <p className="text-white text-base leading-relaxed mb-5">
+                                    View images of the impact <span className="text-secondary-400 font-semibold">your donation</span> can create for rural communities.
+                                </p>
+                                <a
+                                    href="https://linktr.ee/DigiSwasthya"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-2 bg-secondary-500 hover:bg-secondary-400 text-white font-bold text-base px-6 py-3 rounded-xl transition-all duration-200 group"
+                                    style={{ boxShadow: "0 4px 18px rgba(0,0,0,0.25)" }}
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+                                    </svg>
+                                    linktr.ee/DigiSwasthya
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                                        <polyline points="15 3 21 3 21 9" />
+                                        <line x1="10" y1="14" x2="21" y2="3" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -963,6 +998,24 @@ export default function DonatePage() {
                             <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.28 }} className="border-l-4 border-primary-500 pl-5 py-1">
                                 <p className="text-gray-700 text-sm leading-relaxed">
                                     <span className="font-semibold text-gray-900">Your contribution</span> helps bring essential healthcare services to underserved communities across rural India.
+                                </p>
+                            </motion.div>
+                            <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.38 }} className="border-l-4 border-secondary-400 pl-5 py-1">
+                                <p className="text-gray-700 text-sm leading-relaxed">
+                                    To view images of the impact that you can contribute to, kindly visit:{" "}
+                                    <a
+                                        href="https://linktr.ee/DigiSwasthya"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center gap-1 text-primary-700 font-semibold underline underline-offset-2 hover:text-primary-900 transition-colors duration-150"
+                                    >
+                                        linktr.ee/DigiSwasthya
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                                            <polyline points="15 3 21 3 21 9" />
+                                            <line x1="10" y1="14" x2="21" y2="3" />
+                                        </svg>
+                                    </a>
                                 </p>
                             </motion.div>
                         </div>
