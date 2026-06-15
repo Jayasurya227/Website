@@ -44,7 +44,7 @@ export function DonateSection() {
                             <p className="text-sm text-gray-600 pt-1">
                                 To view images of the impact that you can contribute to, kindly visit:{" "}
                                 <a
-                                    href="https://linktr.ee/DigiSwasthya"
+                                    href="https://linktr.ee/digiswasthya"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="inline-flex items-center gap-1 text-primary-700 font-semibold underline underline-offset-2 hover:text-primary-900 transition-colors duration-150"
