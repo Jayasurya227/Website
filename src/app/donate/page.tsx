@@ -1,5 +1,12 @@
 "use client";
 
+/* ── Razorpay global type ── */
+declare global {
+    interface Window {
+        Razorpay: new (options: Record<string, unknown>) => { open(): void };
+    }
+}
+
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
@@ -918,10 +925,89 @@ export default function DonatePage() {
 
     const handleUpiConfirm = () => { setActiveModal(null); setStatus("success"); };
 
+    /* kept for demo/mock fallback only */
     const handleRazorpayConfirm = useCallback(() => {
         setActiveModal(null);
         setStatus("success");
     }, []);
+
+    /* ── Load Razorpay checkout.js once ── */
+    const loadRazorpayScript = (): Promise<boolean> =>
+        new Promise((resolve) => {
+            if (typeof window !== "undefined" && window.Razorpay) { resolve(true); return; }
+            const s = document.createElement("script");
+            s.src = "https://checkout.razorpay.com/v1/checkout.js";
+            s.onload = () => resolve(true);
+            s.onerror = () => resolve(false);
+            document.body.appendChild(s);
+        });
+
+    /* ── Real Razorpay payment flow ── */
+    const initiateRazorpayPayment = useCallback(async () => {
+        setActiveModal(null);
+        setStatus("processing");
+        setErrorMessage(null);
+        try {
+            /* 1. Create order on our backend */
+            const res = await fetch("/api/create-order", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ amount: Number(amount), method: "razorpay" }),
+            });
+            const data = await res.json();
+            if (!res.ok) throw new Error(data.error || "Order creation failed");
+
+            /* 2. Demo/mock mode — show fake modal instead */
+            if (data.isMock) {
+                setStatus("idle");
+                setActiveModal("razorpay");
+                return;
+            }
+
+            /* 3. Load Razorpay checkout script */
+            const loaded = await loadRazorpayScript();
+            if (!loaded) throw new Error("Failed to load payment gateway. Check your connection.");
+            setStatus("idle");
+
+            /* 4. Open Razorpay checkout popup */
+            const rzp = new window.Razorpay({
+                key: data.key,
+                amount: data.amount,
+                currency: data.currency,
+                name: "DigiSwasthya Foundation",
+                description: isRecurring ? "Monthly Donation" : "One-time Donation",
+                order_id: data.orderId,
+                prefill: { name: donorName, email: donorEmail },
+                theme: { color: "#1a6b3a" },
+                notes: { ngo_reg: "U85300UP2020NPL130635" },
+                handler: async (response: {
+                    razorpay_order_id: string;
+                    razorpay_payment_id: string;
+                    razorpay_signature: string;
+                }) => {
+                    /* 5. Verify payment signature */
+                    const vRes = await fetch("/api/verify-payment", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(response),
+                    });
+                    const vData = await vRes.json();
+                    if (vData.success) {
+                        setStatus("success");
+                    } else {
+                        setStatus("error");
+                        setErrorMessage("Payment verification failed. Please contact support.");
+                    }
+                },
+                modal: { ondismiss: () => setStatus("idle") },
+            });
+            rzp.open();
+        } catch (err) {
+            console.error("Razorpay error:", err);
+            setStatus("error");
+            setErrorMessage(err instanceof Error ? err.message : "Payment failed. Please try again.");
+        }
+    }, [amount, donorName, donorEmail, isRecurring]);
 
     return (
         <main className="min-h-screen bg-white">
@@ -1189,7 +1275,7 @@ export default function DonatePage() {
                         email={donorEmail}
                         isRecurring={isRecurring}
                         method={method}
-                        onConfirm={() => setActiveModal(method)}
+                        onConfirm={() => method === "razorpay" ? initiateRazorpayPayment() : setActiveModal(method)}
                         onEdit={() => setActiveModal(null)}
                     />
                 )}
