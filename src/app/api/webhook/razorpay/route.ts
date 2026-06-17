@@ -3,7 +3,8 @@ import crypto from "crypto";
 
 export async function POST(req: NextRequest) {
     try {
-        const body = await req.json();
+        const rawBody = await req.text();
+        const body = JSON.parse(rawBody);
         const signature = req.headers.get("x-razorpay-signature");
         const secret = process.env.RAZORPAY_WEBHOOK_SECRET || "";
 
@@ -14,7 +15,7 @@ export async function POST(req: NextRequest) {
         // Verify Webhook Signature
         const expectedSignature = crypto
             .createHmac("sha256", secret)
-            .update(JSON.stringify(body))
+            .update(rawBody)
             .digest("hex");
 
         if (signature !== expectedSignature) {
