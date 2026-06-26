@@ -421,7 +421,7 @@ export default function ChatBot() {
                     <div className="bg-white px-3 py-1.5 rounded-xl shadow-lg border border-primary-500/20 flex items-center gap-2">
                         <div className="flex flex-col">
                             <span className="text-[7px] uppercase tracking-wider text-primary-600 font-bold leading-none mb-0.5">Online Now</span>
-                            <span className="text-[11px] font-bold text-gray-800 leading-tight">How can we help you?</span>
+                            <span className="text-[11px] font-bold text-gray-800 leading-tight">May I help you?</span>
                         </div>
                         <div className="w-1.5 h-1.5 bg-green-500 rounded-full shadow-[0_0_5px_rgba(34,197,94,0.6)] animate-pulse" />
                     </div>

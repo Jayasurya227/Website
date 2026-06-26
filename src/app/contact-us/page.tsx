@@ -22,7 +22,7 @@ export default function ContactUs() {
                 {/* Prominent Contact Actions at the Top */}
                 <div className="mb-16 bg-white p-8 lg:p-12 rounded-3xl shadow-lg border border-gray-100 flex flex-col md:flex-row items-center justify-between gap-8">
                     <div className="text-center md:text-left">
-                        <h2 className="text-2xl font-black text-gray-900 tracking-tight mb-2">Need Immediate Support?</h2>
+                        <h2 className="text-2xl font-black text-gray-900 tracking-tight mb-2">Need Support?</h2>
                         <p className="text-gray-500 font-medium">Chat with us or call us directly for any healthcare queries.</p>
                     </div>
                     <ContactActions />
@@ -51,21 +51,6 @@ export default function ContactUs() {
                             </div>
                         </div>
 
-                        <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm space-y-4">
-                            <h3 className="text-xl font-bold text-gray-900 tracking-tight">Volunteering</h3>
-                            <p className="text-gray-600 text-sm leading-relaxed">Join DigiSwasthya Foundation as a healthcare professional or volunteer.</p>
-                            <div className="flex flex-col gap-3">
-                                <div className="flex items-center gap-3 text-primary-700 font-bold text-sm bg-primary-50 p-3 rounded-xl italic">
-                                    <Mail className="h-4 w-4" />
-                                    <span>support@digiswasthya.org</span>
-                                </div>
-                                <Button asChild variant="primary" className="w-full shadow-md rounded-xl font-bold">
-                                    <a href="https://forms.gle/GvjUfAoMBKvqTNcXA" target="_blank" rel="noopener noreferrer">
-                                        Open Volunteering Form
-                                    </a>
-                                </Button>
-                            </div>
-                        </div>
                     </motion.div>
 
                     {/* Centre Addresses */}

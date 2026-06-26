@@ -1,45 +1,85 @@
-import { MapPin, ExternalLink, Navigation, Phone, Clock } from "lucide-react";
-import { Button } from "@/components/ui/button";
+"use client";
 
-const centres = [
+import { useEffect, useState } from "react";
+import { collection, getDocs, setDoc, doc } from "firebase/firestore";
+import { db } from "@/lib/firebase";
+import { MapPin, ExternalLink, Phone } from "lucide-react";
+
+type Centre = {
+    id?: string;
+    name: string;
+    address: string;
+    link: string;
+    type: string;
+    phone: string;
+};
+
+const DEFAULT_CENTRES: Centre[] = [
     {
         name: "Sant Kabir Nagar (DS 1)",
         address: "Kali Road, Kathaicha Chauraha, Nath Nagar, Sant Kabir Nagar, Uttar Pradesh - 272176",
         link: "https://maps.app.goo.gl/4gydYNL5zncHEfbVA",
         type: "Flagship Centre",
-        phone: "+91 83184 24800"
+        phone: "+91 83184 24800",
     },
     {
         name: "Muzaffarpur (DS 2)",
         address: "Deoria Road, Nawanagar Nizamat, Sahebganj, Muzaffarpur, Bihar - 843125",
         link: "https://maps.app.goo.gl/d8C46korjVmwhAE6A",
         type: "Regional Unit",
-        phone: "+91 83184 24800"
+        phone: "+91 83184 24800",
     },
     {
         name: "Pune (DS 3)",
         address: "Bhawadi, Ambegaon, Distt. Pune, Maharashtra - 410512",
         link: "https://maps.app.goo.gl/p8pZsGphmd76zhrc6",
         type: "Community Unit",
-        phone: "+91 83184 24800"
+        phone: "+91 83184 24800",
     },
     {
         name: "Palghar (DS 4)",
         address: "407, A wing, Sadiya Apartment, 90th Ft. Rd. Oswal Nagari, Nalasopara East, Palghar, MH- 401209",
         link: "https://maps.app.goo.gl/szyf7NfRfzfHNhV28",
         type: "Regional Hub",
-        phone: "+91 83184 24800"
+        phone: "+91 83184 24800",
     },
     {
         name: "Asharafpur (DS 5)",
         address: "Near Bharat Gas Agency, Asharafpur, Uttar Pradesh 272162",
         link: "https://maps.app.goo.gl/v4DK68qZuXnsaBpF9",
         type: "Village Unit",
-        phone: "+91 83184 24800"
+        phone: "+91 83184 24800",
     },
 ];
 
 export function TelemedicineCentres() {
+    const [centres, setCentres] = useState<Centre[]>(DEFAULT_CENTRES);
+
+    useEffect(() => {
+        async function fetchCentres() {
+            try {
+                const colRef = collection(db, "centres");
+                const snap = await getDocs(colRef);
+
+                if (!snap.empty) {
+                    const data = snap.docs.map((d) => ({ id: d.id, ...d.data() } as Centre));
+                    setCentres(data);
+                } else {
+                    // First time: seed Firestore with default centres
+                    for (const centre of DEFAULT_CENTRES) {
+                        const id = centre.name.replace(/\s+/g, "-").toLowerCase();
+                        await setDoc(doc(db, "centres", id), centre);
+                    }
+                }
+            } catch (err) {
+                console.error("Failed to fetch centres:", err);
+                // Fallback to hardcoded centres silently
+            }
+        }
+
+        fetchCentres();
+    }, []);
+
     return (
         <section className="py-20 bg-gray-50">
             <div className="container px-4">
@@ -58,7 +98,7 @@ export function TelemedicineCentres() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {centres.map((centre, i) => (
                         <div
-                            key={i}
+                            key={centre.id || i}
                             className="bg-white border border-gray-100 hover:border-primary-200 hover:shadow-md transition-all duration-300 p-7 rounded-xl flex flex-col"
                         >
                             <div className="flex items-start justify-between mb-4">
@@ -85,10 +125,7 @@ export function TelemedicineCentres() {
                                     <Phone className="h-4 w-4 text-gray-400 flex-shrink-0" />
                                     <span className="text-sm text-gray-500">{centre.phone}</span>
                                 </div>
-                                <div className="flex items-center gap-2.5">
-                                    <Clock className="h-4 w-4 text-gray-400 flex-shrink-0" />
-                                    <span className="text-sm text-gray-500">9:00 AM – 6:00 PM</span>
-                                </div>
+
                             </div>
 
                             <a

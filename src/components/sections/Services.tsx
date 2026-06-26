@@ -2,55 +2,217 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Stethoscope, Video, Activity, HeartPulse, ShieldCheck, Target, Heart } from "lucide-react";
+import { 
+    Stethoscope, 
+    Video, 
+    Megaphone, 
+    Activity, 
+    HeartPulse, 
+    Ambulance, 
+    Coins, 
+    ShieldCheck
+} from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+
+// --- ILLUSTRATED SVG ICONS ---
+
+const PrimaryCheckupIcon = () => (
+    <svg className="w-14 h-14" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="60" cy="60" r="50" fill="#ffedd5" stroke="#fdba74" strokeWidth="2.5" />
+        <rect x="42" y="32" width="36" height="48" rx="4" fill="#ffffff" stroke="#16a34a" strokeWidth="2" />
+        <rect x="52" y="26" width="16" height="8" rx="2" fill="#fbbf24" stroke="#d97706" strokeWidth="1.5" />
+        <line x1="48" y1="44" x2="64" y2="44" stroke="#bbf7d0" strokeWidth="2" strokeLinecap="round" />
+        <line x1="48" y1="52" x2="72" y2="52" stroke="#bbf7d0" strokeWidth="2" strokeLinecap="round" />
+        <line x1="48" y1="60" x2="68" y2="60" stroke="#bbf7d0" strokeWidth="2" strokeLinecap="round" />
+        <line x1="48" y1="68" x2="60" y2="68" stroke="#bbf7d0" strokeWidth="2" strokeLinecap="round" />
+        <path d="M68 44l2 2 4-4" stroke="#16a34a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M68 60l2 2 4-4" stroke="#16a34a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M34 50c-2 8 2 18 10 22s18 4 22-2c3-4 5-10 3-16" stroke="#1a6636" strokeWidth="2.5" strokeLinecap="round" />
+        <path d="M34 50V44M44 50V44" stroke="#154f2a" strokeWidth="2" strokeLinecap="round" />
+        <circle cx="68" cy="54" r="6" fill="#fbbf24" stroke="#d97706" strokeWidth="1.5" />
+        <circle cx="68" cy="54" r="2" fill="#ffffff" />
+    </svg>
+);
+
+const TeleconsultationIcon = () => (
+    <svg className="w-14 h-14" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="60" cy="60" r="50" fill="#ffedd5" stroke="#fdba74" strokeWidth="2.5" />
+        <rect x="34" y="32" width="52" height="36" rx="3" fill="#ffffff" stroke="#2563eb" strokeWidth="2" />
+        <path d="M28 68h64l3 6H25l3-6z" fill="#cbd5e1" stroke="#1e40af" strokeWidth="2" />
+        <line x1="54" y1="71" x2="66" y2="71" stroke="#64748b" strokeWidth="2" strokeLinecap="round" />
+        <circle cx="60" cy="46" r="8" fill="#f87171" />
+        <path d="M50 58c0-5 4-7 10-7s10 2 10 7H50z" fill="#3b82f6" />
+        <path d="M58 51l2 3 2-3" stroke="#ffffff" strokeWidth="1" />
+        <circle cx="60" cy="35" r="1" fill="#22c55e" />
+        <path d="M90 32c4 4 4 10 0 14M94 28c6 6 6 18 0 24" stroke="#3b82f6" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+);
+
+const AwarenessCampsIcon = () => (
+    <svg className="w-14 h-14" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="60" cy="60" r="50" fill="#ffedd5" stroke="#fdba74" strokeWidth="2.5" />
+        <path d="M35 56h10l16 12V36L45 48H35a3 3 0 00-3 3v2a3 3 0 003 3z" fill="#ef4444" stroke="#991b1b" strokeWidth="2" strokeLinejoin="round" />
+        <path d="M61 42c4-2 8-2 10 2s2 8-2 10" stroke="#f59e0b" strokeWidth="2" strokeLinecap="round" />
+        <rect x="52" y="58" width="36" height="26" rx="4" fill="#ffffff" stroke="#ef4444" strokeWidth="2" />
+        <path d="M64 58v-4a2 2 0 012-2h8a2 2 0 012 2v4" stroke="#991b1b" strokeWidth="2" />
+        <path d="M70 65v12M64 71h12" stroke="#ef4444" strokeWidth="2.5" strokeLinecap="round" />
+    </svg>
+);
+
+const DiagnosticsEMRIcon = () => (
+    <svg className="w-14 h-14" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="60" cy="60" r="50" fill="#ffedd5" stroke="#fdba74" strokeWidth="2.5" />
+        <rect x="36" y="28" width="48" height="40" rx="3" fill="#ffffff" stroke="#f472b6" strokeWidth="1.5" strokeDasharray="3 3" />
+        <path d="M60 52c-2.5-4.5-8-6-12-3s-4.5 8 0 12l12 11 12-11c4.5-4 4-9 0-12s-9.5-1.5-12 3z" fill="#ec4899" stroke="#db2777" strokeWidth="2" />
+        <path d="M52 56h3l2-4 3 8 2-6 2 2h3" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M30 82c15 0 20-8 32-8h16a4 4 0 014 4v2a4 4 0 01-4 4H62l-8 4H30V82z" fill="#ffedd5" stroke="#ea580c" strokeWidth="2" strokeLinejoin="round" />
+        <path d="M88 38v8M84 42h8" stroke="#ec4899" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+);
+
+const ReferralsIcon = () => (
+    <svg className="w-14 h-14" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="60" cy="60" r="50" fill="#ffedd5" stroke="#fdba74" strokeWidth="2.5" />
+        <rect x="42" y="26" width="36" height="68" rx="6" fill="#ffffff" stroke="#8b5cf6" strokeWidth="2" />
+        <rect x="46" y="32" width="28" height="50" rx="2" fill="#f3e8ff" />
+        <line x1="54" y1="29" x2="66" y2="29" stroke="#a78bfa" strokeWidth="1.5" strokeLinecap="round" />
+        <circle cx="60" cy="88" r="2.5" fill="#a78bfa" />
+        <path d="M50 70c4-4 8 2 12-2s4-10 8-12" stroke="#8b5cf6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="3 3" />
+        <circle cx="50" cy="70" r="3.5" fill="#a78bfa" stroke="#6d28d9" strokeWidth="1" />
+        <path d="M70 56c0-2-2-4-4-4s-4 2-4 4c0 3 4 6 4 6s4-3 4-6z" fill="#ef4444" />
+        <circle cx="66" cy="56" r="1" fill="#ffffff" />
+        <rect x="52" y="38" width="16" height="12" rx="1.5" fill="#ffffff" stroke="#8b5cf6" strokeWidth="1" />
+        <path d="M60 41v6M57 44h6" stroke="#ef4444" strokeWidth="1" strokeLinecap="round" />
+    </svg>
+);
+
+const ConvenienceSupportIcon = () => (
+    <svg className="w-14 h-14" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="60" cy="60" r="50" fill="#ffedd5" stroke="#fdba74" strokeWidth="2.5" />
+        <path d="M30 46h38l12 10v16H30V46z" fill="#ffffff" stroke="#ea580c" strokeWidth="2" />
+        <path d="M68 46h6l8 10v6h-14v-16z" fill="#d1fae5" stroke="#ea580c" strokeWidth="2" />
+        <circle cx="44" cy="74" r="8" fill="#374151" stroke="#ea580c" strokeWidth="2" />
+        <circle cx="44" cy="74" r="3" fill="#ffffff" />
+        <circle cx="68" cy="74" r="8" fill="#374151" stroke="#ea580c" strokeWidth="2" />
+        <circle cx="68" cy="74" r="3" fill="#ffffff" />
+        <path d="M48 52v12M42 58h12" stroke="#ef4444" strokeWidth="2.5" strokeLinecap="round" />
+        <path d="M72 42h4v4h-4z" fill="#3b82f6" />
+        <path d="M74 38l2 4M70 40l2 2" stroke="#3b82f6" strokeWidth="1.5" strokeLinecap="round" />
+        <line x1="20" y1="50" x2="26" y2="50" stroke="#f97316" strokeWidth="2" strokeLinecap="round" />
+        <line x1="16" y1="58" x2="24" y2="58" stroke="#f97316" strokeWidth="2" strokeLinecap="round" />
+        <line x1="20" y1="66" x2="26" y2="66" stroke="#f97316" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+);
+
+const FinancialSupportIcon = () => (
+    <svg className="w-14 h-14" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="60" cy="60" r="50" fill="#ffedd5" stroke="#fdba74" strokeWidth="2.5" />
+        <rect x="34" y="42" width="46" height="26" rx="2" fill="#ffffff" stroke="#16a34a" strokeWidth="2" transform="rotate(-6 57 55)" />
+        <circle cx="56" cy="54" r="5" fill="#bbf7d0" stroke="#16a34a" strokeWidth="1.5" />
+        <path d="M42 48h4M68 58h4" stroke="#86efac" strokeWidth="2" strokeLinecap="round" />
+        <circle cx="74" cy="66" r="9" fill="#fbbf24" stroke="#d97706" strokeWidth="1.5" />
+        <circle cx="74" cy="66" r="6" fill="#fef3c7" />
+        <path d="M72 63h4M72 65.5h4M74 63c1 0 2 .5 2 1.5s-1 1.5-2 1.5h-2M74 66l2 2.5" stroke="#d97706" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="62" cy="72" r="9" fill="#fbbf24" stroke="#d97706" strokeWidth="1.5" />
+        <circle cx="62" cy="72" r="6" fill="#fef3c7" />
+        <path d="M60 69h4M60 71.5h4M62 69c1 0 2 .5 2 1.5s-1 1.5-2 1.5h-2M62 72l2 2.5" stroke="#d97706" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+);
+
+// --- INDIVIDUAL SERVICE CARD COMPONENT ---
+
+function ServiceCard({ 
+    service 
+}: { 
+    service: any; 
+}) {
+    return (
+        <div
+            className="w-full h-[240px] rounded-2xl border bg-white border-slate-100 hover:border-primary-300 hover:shadow-xl hover:shadow-primary-900/5 transition-all duration-300 p-5 flex flex-col items-center justify-center text-center group overflow-hidden"
+        >
+            <div className="flex flex-col items-center transition-transform duration-300 translate-y-6 group-hover:translate-y-0">
+                <div className="mb-3 flex items-center justify-center transition-transform duration-300 group-hover:scale-105 filter drop-shadow-sm">
+                    {service.icon}
+                </div>
+                <h3 className="text-xs md:text-sm font-bold text-slate-800 font-sans tracking-tight leading-snug group-hover:text-primary-700 transition-colors max-w-[200px]">
+                    {service.title}
+                </h3>
+            </div>
+            <div className="opacity-0 max-h-0 overflow-hidden translate-y-4 group-hover:opacity-100 group-hover:max-h-[120px] group-hover:translate-y-0 transition-all duration-300 mt-0 group-hover:mt-3 pointer-events-none">
+                <p className="text-[11px] md:text-xs text-slate-500 leading-relaxed max-w-[200px] mx-auto">
+                    {service.description}
+                </p>
+            </div>
+        </div>
+    );
+}
+
+// --- MAIN SERVICES SECTION COMPONENT ---
 
 export function Services() {
     const { t } = useLanguage();
 
     const services = [
         {
-            title: t("services.items.checkups.title"),
-            description: t("services.items.checkups.description"),
-            icon: <Stethoscope className="w-8 h-8" />,
-            color: "bg-blue-50 text-blue-600",
-            delay: 0.1
+            title: t("services.items.primaryCheckup.title"),
+            description: t("services.items.primaryCheckup.description"),
+            icon: <PrimaryCheckupIcon />,
+            smallIcon: <Stethoscope className="w-5 h-5" />,
+            delay: 0.05
         },
         {
             title: t("services.items.teleconsultation.title"),
             description: t("services.items.teleconsultation.description"),
-            icon: <Video className="w-8 h-8" />,
-            color: "bg-primary-50 text-primary-600",
-            delay: 0.2
+            icon: <TeleconsultationIcon />,
+            smallIcon: <Video className="w-5 h-5" />,
+            delay: 0.1
         },
         {
-            title: t("services.items.diagnostics.title"),
-            description: t("services.items.diagnostics.description"),
-            icon: <Activity className="w-8 h-8" />,
-            color: "bg-emerald-50 text-emerald-600",
-            delay: 0.3
+            title: t("services.items.awarenessCamps.title"),
+            description: t("services.items.awarenessCamps.description"),
+            icon: <AwarenessCampsIcon />,
+            smallIcon: <Megaphone className="w-5 h-5" />,
+            delay: 0.15
+        },
+        {
+            title: t("services.items.diagnosticsEMR.title"),
+            description: t("services.items.diagnosticsEMR.description"),
+            icon: <DiagnosticsEMRIcon />,
+            smallIcon: <Activity className="w-5 h-5" />,
+            delay: 0.2
         },
         {
             title: t("services.items.referrals.title"),
             description: t("services.items.referrals.description"),
-            icon: <HeartPulse className="w-8 h-8" />,
-            color: "bg-rose-50 text-rose-600",
-            delay: 0.4
+            icon: <ReferralsIcon />,
+            smallIcon: <HeartPulse className="w-5 h-5" />,
+            delay: 0.25
+        },
+        {
+            title: t("services.items.convenienceSupport.title"),
+            description: t("services.items.convenienceSupport.description"),
+            icon: <ConvenienceSupportIcon />,
+            smallIcon: <Ambulance className="w-5 h-5" />,
+            delay: 0.3
+        },
+        {
+            title: t("services.items.financialSupport.title"),
+            description: t("services.items.financialSupport.description"),
+            icon: <FinancialSupportIcon />,
+            smallIcon: <Coins className="w-5 h-5" />,
+            delay: 0.35
         }
     ];
 
-    const impactMetrics = [
-        { label: t("impact.patientsServed"), value: "78K+", sub: t("impact.livesTransformed"), icon: <Target className="w-5 h-5" /> },
-        { label: t("impact.consultations"), value: "71K+", sub: t("impact.expertAdvice"), icon: <Activity className="w-5 h-5" /> },
-        { label: t("impact.livesImpacted"), value: "2M+", sub: t("impact.healthierCommunities"), icon: <Heart className="w-5 h-5" /> }
-    ];
+    const row1 = services.slice(0, 4);
+    const row2 = services.slice(4, 7);
 
     return (
         <section className="py-24 bg-white overflow-hidden" id="services">
             <div className="container max-w-7xl">
 
                 {/* Header */}
-                <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
+                <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -83,57 +245,80 @@ export function Services() {
                     </motion.p>
                 </div>
 
-                {/* Service Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
-                    {services.map((service, idx) => (
+                {/* Service Cards: Row 1 (4 items) */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                    {row1.map((service, idx) => (
                         <motion.div
                             key={idx}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: service.delay }}
-                            className="p-7 bg-white border border-gray-100 hover:border-primary-200 hover:shadow-md transition-all duration-300 rounded-xl group"
+                            transition={{ delay: service.delay, duration: 0.4 }}
                         >
-                            <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-5 ${service.color}`}>
-                                {service.icon}
-                            </div>
-                            <h3 className="text-lg font-semibold text-gray-900 mb-3">{service.title}</h3>
-                            <p className="text-gray-500 leading-relaxed text-sm">
-                                {service.description}
-                            </p>
+                            <ServiceCard 
+                                service={service} 
+                            />
                         </motion.div>
                     ))}
                 </div>
 
-                {/* Impact Band — editorial, clean */}
-                <div className="relative rounded-2xl overflow-hidden bg-primary-900">
+                {/* Service Cards: Row 2 (3 items centered on desktop) */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-20 lg:w-3/4 mx-auto">
+                    {row2.map((service, idx) => {
+                        return (
+                            <motion.div
+                                key={idx + 4}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: service.delay, duration: 0.4 }}
+                                className={idx === 2 ? "sm:col-span-2 sm:max-w-md sm:mx-auto sm:w-full lg:col-span-1" : ""}
+                            >
+                                <ServiceCard 
+                                    service={service} 
+                                />
+                            </motion.div>
+                        );
+                    })}
+                </div>
+
+                {/* Impact Band */}
+                <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-[#f0f7ff] via-[#f8fafc] to-[#e0f2fe] border border-blue-100/80">
                     <div className="grid lg:grid-cols-2 gap-0 items-stretch">
                         {/* Photo side */}
-                        <div className="relative min-h-[280px]">
+                        <div className="relative min-h-[340px]">
                             <Image
-                                src="/images/impact-community.jpg"
+                                src="/images/real-campaign.jpg"
                                 alt="DigiSwasthya Community Impact"
                                 fill
-                                className="object-cover brightness-75"
+                                className="object-cover"
                             />
                         </div>
                         {/* Content side */}
                         <div className="p-10 md:p-14 flex flex-col justify-center space-y-6">
-                            <h3 className="font-serif text-3xl md:text-4xl font-bold text-white leading-snug">
+                            <h3 className="font-serif text-3xl md:text-4xl font-bold text-slate-950 leading-snug">
                                 {t("impact.title")}{" "}
-                                <span className="text-secondary-400">{t("impact.highlight")}</span>
+                                <span className="text-primary-600">{t("impact.highlight")}</span>
                             </h3>
-                            <p className="text-primary-200 text-base leading-relaxed">
+                            <p className="text-slate-600 text-base leading-relaxed">
                                 {t("impact.description")}
                             </p>
-                            <div className="grid grid-cols-3 gap-6 pt-4 border-t border-white/10">
-                                {impactMetrics.map((impact, idx) => (
-                                    <div key={idx}>
-                                        <div className="text-2xl font-bold text-secondary-400">{impact.value}</div>
-                                        <div className="text-xs text-primary-300 uppercase tracking-wide mt-1">{impact.label}</div>
-                                    </div>
-                                ))}
-                            </div>
+                            
+                            {/* Campaign Details List */}
+                            <ul className="space-y-4 pt-4 border-t border-slate-200 text-sm text-slate-700">
+                                <li className="flex items-start gap-3">
+                                    <ShieldCheck className="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" />
+                                    <span>{t("impact.campaignDetail1")}</span>
+                                </li>
+                                <li className="flex items-start gap-3">
+                                    <ShieldCheck className="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" />
+                                    <span>{t("impact.campaignDetail2")}</span>
+                                </li>
+                                <li className="flex items-start gap-3">
+                                    <ShieldCheck className="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" />
+                                    <span>{t("impact.campaignDetail3")}</span>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>

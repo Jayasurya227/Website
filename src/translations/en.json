@@ -37,7 +37,7 @@
         "titleHighlight": "Every",
         "titlePart2": "Rural Family",
         "subtitle": "Bridging the gap between rural India and modern medicine through expert teleconsultation and essential diagnostics at your doorstep.",
-        "bookConsultation": "Book Consultation"
+        "bookConsultation": "Connect With Us"
     },
     "stats": {
         "patientsServed": "Patients Served",
@@ -52,34 +52,43 @@
         "titlePart2": "& Modern Medicine",
         "description": "We provide a full spectrum of healthcare services directly to underserved communities, ensuring quality care is accessible to all.",
         "items": {
-            "checkups": {
-                "title": "Health Checkups",
+            "primaryCheckup": {
+                "title": "Primary Health Checkup",
                 "description": "Comprehensive screenings in rural areas to identify symptoms, perform physical exams, and monitor vital signs for early disease detection."
             },
             "teleconsultation": {
-                "title": "Teleconsultation",
+                "title": "Tele - Consultation With Health Professionals",
                 "description": "Connecting rural patients with specialist doctors via high-speed video links, bridging the gap between villages and urban medical centers."
             },
-            "diagnostics": {
-                "title": "Diagnostics",
-                "description": "Providing essential lab tests and diagnostic tools on-site, ensuring patients receive accurate results without traveling long distances."
+            "awarenessCamps": {
+                "title": "Awareness And Health Camps",
+                "description": "Regularly conducting village health camps and awareness sessions to educate communities on hygiene, preventive care, and digital consultations."
+            },
+            "diagnosticsEMR": {
+                "title": "Diagnosis, EMR Generation And Treatment Plan",
+                "description": "Providing on-site diagnostic tests, generating Electronic Medical Records (EMR), and crafting personalized treatment plans for every patient."
             },
             "referrals": {
-                "title": "Referrals",
-                "description": "Guidance and seamless referral pathways to trusted secondary and tertiary hospitals for specialized surgery or advanced treatments."
+                "title": "Referral Pathways To Esteemed Hospitals",
+                "description": "Ensuring seamless guidance and referral pathways to trusted secondary and tertiary partner hospitals for surgeries or advanced treatments."
+            },
+            "convenienceSupport": {
+                "title": "Convenience Support",
+                "description": "Assisting patients with logistics, scheduling appointments, travel support, and navigating hospital processes to ensure a hassle-free experience."
+            },
+            "financialSupport": {
+                "title": "Financial Support Guidance",
+                "description": "Connecting eligible patients with government healthcare schemes, corporate CSR funds, and donor networks to cover medical and treatment costs."
             }
         }
     },
     "impact": {
-        "title": "Measurable Impact.",
-        "highlight": "Proven Outcomes.",
-        "description": "Our data-driven approach ensures that every rupee donated translates into direct medical intervention for those who need it most.",
-        "patientsServed": "Patients Served",
-        "consultations": "Consultations",
-        "livesImpacted": "Lives Impacted",
-        "livesTransformed": "Lives Transformed",
-        "expertAdvice": "Expert Medical Advice",
-        "healthierCommunities": "Healthier Communities"
+        "title": "Health Camps & Awareness.",
+        "highlight": "Reaching the Last Mile.",
+        "description": "We conduct regular health camps and healthcare awareness drives in remote villages. By educating families about hygiene, preventive care, and digital consultations, we empower rural communities to take control of their health.",
+        "campaignDetail1": "Interactive sessions educating villages on hygiene, nutrition, and preventive healthcare.",
+        "campaignDetail2": "Conducting free basic diagnostic checkups and health screenings on-the-ground.",
+        "campaignDetail3": "Connecting patients directly to remote medical specialists via telemedicine."
     },
     "donateSection": {
         "title": "DONATE FOR THE CAUSE!",

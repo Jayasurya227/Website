@@ -7,7 +7,7 @@ import { Clock, Phone, Send, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ContactActions } from "./ContactActions";
 
-type ContactType = "Patient" | "Donor" | "Volunteer" | "NGO / CSR Partner" | "General Inquiry";
+type ContactType = "Donor" | "Volunteer" | "General Inquiry";
 
 interface FormData {
     name: string;
@@ -109,76 +109,12 @@ export function ContactForm() {
                                     className="w-full border border-gray-300 rounded-xl p-3 text-sm text-gray-900 font-medium focus:ring-2 focus:ring-primary-500 transition-all outline-none appearance-none bg-white shadow-sm"
                                 >
                                     <option value="General Inquiry">General Inquiry</option>
-                                    <option value="Patient">Patient / Family</option>
                                     <option value="Donor">Donor</option>
                                     <option value="Volunteer">Volunteer</option>
-                                    <option value="NGO / CSR Partner">NGO / CSR Partner</option>
                                 </select>
                             </div>
 
-                            <AnimatePresence mode="wait">
-                                {contactType === "NGO / CSR Partner" && (
-                                    <motion.div
-                                        key="ngo-fields"
-                                        initial={{ opacity: 0, height: 0 }}
-                                        animate={{ opacity: 1, height: "auto" }}
-                                        exit={{ opacity: 0, height: 0 }}
-                                        className="grid md:grid-cols-2 gap-6"
-                                    >
-                                        <div className="space-y-1.5">
-                                            <label className="text-sm font-bold text-gray-900">Organization Name</label>
-                                            <input
-                                                {...register("organization", { required: contactType === "NGO / CSR Partner" })}
-                                                placeholder="Company or NGO Name"
-                                                className="w-full border border-gray-300 rounded-xl p-3 text-sm text-gray-900 focus:ring-2 focus:ring-primary-500 outline-none bg-white font-medium shadow-sm"
-                                            />
-                                        </div>
-                                        <div className="space-y-1.5">
-                                            <label className="text-sm font-bold text-gray-900">Location</label>
-                                            <input
-                                                {...register("location", { required: contactType === "NGO / CSR Partner" })}
-                                                placeholder="City, State"
-                                                className="w-full border border-gray-300 rounded-xl p-3 text-sm text-gray-900 focus:ring-2 focus:ring-primary-500 outline-none bg-white font-medium shadow-sm"
-                                            />
-                                        </div>
-                                        <div className="md:col-span-2 space-y-1.5">
-                                            <label className="text-sm font-bold text-gray-900">Partnership Interest</label>
-                                            <input
-                                                {...register("partnershipInterest")}
-                                                placeholder="e.g. CSR Funding, Healthcare Delivery, Tech Support"
-                                                className="w-full border border-gray-300 rounded-xl p-3 text-sm text-gray-900 focus:ring-2 focus:ring-primary-500 outline-none bg-white font-medium shadow-sm"
-                                            />
-                                        </div>
-                                    </motion.div>
-                                )}
 
-                                {contactType === "Patient" && (
-                                    <motion.div
-                                        key="patient-fields"
-                                        initial={{ opacity: 0, height: 0 }}
-                                        animate={{ opacity: 1, height: "auto" }}
-                                        exit={{ opacity: 0, height: 0 }}
-                                        className="grid md:grid-cols-2 gap-6"
-                                    >
-                                        <div className="space-y-1.5">
-                                            <label className="text-sm font-bold text-gray-900">Your Location</label>
-                                            <input
-                                                {...register("location", { required: contactType === "Patient" })}
-                                                placeholder="City, District"
-                                                className="w-full border border-gray-300 rounded-xl p-3 text-sm text-gray-900 focus:ring-2 focus:ring-primary-500 outline-none bg-white font-medium shadow-sm"
-                                            />
-                                        </div>
-                                        <div className="space-y-1.5">
-                                            <label className="text-sm font-bold text-gray-900">Type of Assistance Needed</label>
-                                            <input
-                                                {...register("assistanceNeeded")}
-                                                placeholder="e.g. Telemedicine, Medicines, Diagnosis"
-                                                className="w-full border border-gray-300 rounded-xl p-3 text-sm text-gray-900 focus:ring-2 focus:ring-primary-500 outline-none bg-white font-medium shadow-sm"
-                                            />
-                                        </div>
-                                    </motion.div>
-                                )}
-                            </AnimatePresence>
 
                             <div className="space-y-1.5">
                                 <label className="text-sm font-bold text-gray-900">Subject</label>

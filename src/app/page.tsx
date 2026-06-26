@@ -6,7 +6,6 @@ import { Hero } from "@/components/sections/Hero";
 import { Services } from "@/components/sections/Services";
 import { BeneficiaryStories } from "@/components/sections/BeneficiaryStories";
 import { Collaboration } from "@/components/sections/Collaboration";
-import { MediaImpact } from "@/components/sections/MediaImpact";
 import { TelemedicineCentres } from "@/components/sections/TelemedicineCentres";
 import { AwardSection } from "@/components/sections/AwardSection";
 import { VideoHighlight } from "@/components/sections/VideoHighlight";
@@ -19,11 +18,10 @@ export default function Home() {
     <main className="min-h-screen bg-[#f4f7f5]">
       <Navbar />
       <Hero />
+      <BeneficiaryStories />
       <AwardSection />
-      <MediaImpact />
       <VideoHighlight />
       <Services />
-      <BeneficiaryStories />
       <Collaboration />
       <TelemedicineCentres />
 

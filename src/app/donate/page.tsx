@@ -18,6 +18,8 @@ import {
     ArrowRight, Loader2, Heart, X, ChevronLeft,
     Search, Eye, EyeOff, Edit2, User, Mail, Repeat, CreditCard as CardIcon,
 } from "lucide-react";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 
 /* ─────────────────────────────────────────────────────────────
    CONSTANTS
@@ -908,8 +910,31 @@ export default function DonatePage() {
     const [donorName, setDonorName] = useState("");
     const [donorEmail, setDonorEmail] = useState("");
     const [status, setStatus] = useState<"idle" | "processing" | "success" | "error">("idle");
-    const [errorMessage, setErrorMessage] = useState<string | null>(null);
     const [activeModal, setActiveModal] = useState<null | "summary" | "upi_qr" | "razorpay">(null);
+    const [errorMessage, setErrorMessage] = useState<string | null>(null);
+    const [livesImpacted, setLivesImpacted] = useState<number>(2850000);
+
+    const formatNumber = (num: number) => {
+        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    };
+
+    useEffect(() => {
+        async function fetchStats() {
+            try {
+                const ref = doc(db, "stats", "main");
+                const snap = await getDoc(ref);
+                if (snap.exists()) {
+                    const data = snap.data();
+                    if (data.livesImpacted !== undefined && data.livesImpacted !== null) {
+                        setLivesImpacted(data.livesImpacted);
+                    }
+                }
+            } catch (err) {
+                console.error("Failed to fetch donate page stats:", err);
+            }
+        }
+        fetchStats();
+    }, []);
 
     const handleDonation = () => {
         if (status === "processing") return;
@@ -1030,8 +1055,7 @@ export default function DonatePage() {
                                 Help us bring quality healthcare to underserved communities across rural India.
                             </p>
                             <div className="flex flex-wrap gap-10 border-t border-primary-800 pt-8">
-                                <div><div className="text-2xl font-bold text-white">50,000+</div><div className="text-xs text-primary-400 uppercase tracking-wide mt-1">Lives Impacted</div></div>
-                                <div><div className="text-2xl font-bold text-white">120+</div><div className="text-xs text-primary-400 uppercase tracking-wide mt-1">Villages Reached</div></div>
+                                <div><div className="text-2xl font-bold text-white">{formatNumber(livesImpacted)}+</div><div className="text-xs text-primary-400 uppercase tracking-wide mt-1">Lives Impacted</div></div>
                                 <div><div className="text-2xl font-bold text-secondary-400">80G</div><div className="text-xs text-primary-400 uppercase tracking-wide mt-1">Tax Exempt</div></div>
                             </div>
                         </div>

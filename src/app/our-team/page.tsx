@@ -120,6 +120,34 @@ export default function OurTeam() {
                 </p>
             </section>
 
+            {/* Certification Banner */}
+            <div className="max-w-4xl mx-auto px-4 mt-8">
+                <div className="bg-white border border-gray-200/80 rounded-2xl p-6 shadow-sm flex flex-col sm:flex-row items-center gap-6">
+                    <div className="flex-shrink-0">
+                        <svg width="80" height="96" viewBox="0 0 80 96" fill="none" xmlns="http://www.w3.org/2000/svg" className="shadow-sm rounded">
+                            {/* Top Red Square */}
+                            <rect width="80" height="60" rx="4" fill="#DA291C" />
+                            <text x="10" y="16" fill="white" fontFamily="sans-serif" fontWeight="900" fontSize="10" letterSpacing="-0.2">Great</text>
+                            <text x="10" y="27" fill="white" fontFamily="sans-serif" fontWeight="900" fontSize="10" letterSpacing="-0.2">Place</text>
+                            <text x="10" y="38" fill="white" fontFamily="sans-serif" fontWeight="900" fontSize="10" letterSpacing="-0.2">To</text>
+                            <text x="10" y="49" fill="white" fontFamily="sans-serif" fontWeight="900" fontSize="10" letterSpacing="-0.2">Work®</text>
+                            
+                            {/* Bottom Blue Banner */}
+                            <path d="M0 60 H80 V88 L40 96 L0 88 Z" fill="#0A2240" />
+                            <text x="40" y="71" fill="white" fontFamily="sans-serif" fontWeight="bold" fontSize="8" textAnchor="middle" letterSpacing="0.5">Certified</text>
+                            <text x="40" y="80" fill="#FFC72C" fontFamily="sans-serif" fontWeight="bold" fontSize="5" textAnchor="middle">AUG 2023 - AUG 2024</text>
+                            <text x="40" y="87" fill="white" fontFamily="sans-serif" fontWeight="bold" fontSize="5" textAnchor="middle">INDIA</text>
+                        </svg>
+                    </div>
+                    <div className="text-center sm:text-left space-y-1.5">
+                        <h3 className="text-lg font-bold text-gray-900">Great Place to Work Certified™</h3>
+                        <p className="text-sm text-gray-500 leading-relaxed max-w-2xl font-medium">
+                            We are delighted to share that DigiSwasthya Foundation was certified as a <span className="text-gray-700 font-semibold">Great Place to Work (2023–2024)</span> under the category of Non-profit and Charity Organizations. This recognition highlights our team's commitment to building a workplace rooted in trust, respect, and mutual support.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
             <div className="container">
                 <Section title="Board of Directors" members={board} />
                 <Section title="Core Team" members={core} />
@@ -127,8 +155,30 @@ export default function OurTeam() {
                 <Section title="Advisory Board" members={advisory} />
                 <Section title="Doctors Onboard" members={doctors} />
                 <Section title="On-Ground Team" members={onGround} />
-
             </div>
+
+            {/* Volunteer CTA Section */}
+            <section className="bg-gradient-to-br from-[#f0f7ff] via-white to-[#e0f2fe] border-t border-blue-100 py-16 text-center mt-12">
+                <div className="max-w-2xl mx-auto px-4 space-y-6">
+                    <h2 className="text-3xl font-bold text-gray-900">Make an Impact With Us</h2>
+                    <p className="text-gray-600 leading-relaxed font-medium">
+                        Are you a doctor, medical student, or passionate volunteer? Join our mission to transform healthcare accessibility in rural India.
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                        <div className="flex items-center gap-2 text-primary-700 font-semibold text-sm bg-primary-50 px-4 py-2.5 rounded-xl border border-primary-100">
+                            <span className="font-bold">Email:</span> support@digiswasthya.org
+                        </div>
+                        <a
+                            href="https://forms.gle/GvjUfAoMBKvqTNcXA"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block bg-primary-600 hover:bg-primary-700 text-white font-bold px-8 py-3 rounded-xl shadow-md transition-colors duration-200"
+                        >
+                            Apply as a Volunteer
+                        </a>
+                    </div>
+                </div>
+            </section>
 
             <Footer />
         </main>

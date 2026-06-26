@@ -46,9 +46,9 @@ export default function AboutUs() {
             <Navbar />
 
             {/* Header / Hero */}
-            <section className="relative bg-primary-900 text-white py-24 overflow-hidden">
+            <section className="relative bg-gradient-to-br from-[#f0f7ff] via-[#fafaf9] to-[#e0f2fe] border-b border-blue-100/80 text-slate-900 py-24 overflow-hidden">
                 <div className="absolute inset-0 opacity-10">
-                    <div className="absolute inset-0 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:20px_20px]" />
+                    <div className="absolute inset-0 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:20px_20px]" />
                 </div>
                 <div className="container relative z-10 text-center">
                     <motion.h1
@@ -56,13 +56,13 @@ export default function AboutUs() {
                         animate={{ opacity: 1, y: 0 }}
                         className="text-4xl md:text-5xl font-bold mb-6"
                     >
-                        Our Commitment to <span className="text-secondary-400 font-extrabold">Excellence</span>
+                        Our Commitment to <span className="text-primary-600 font-extrabold">Excellence</span>
                     </motion.h1>
                     <motion.p
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.2 }}
-                        className="text-primary-100 max-w-2xl mx-auto text-lg md:text-xl font-light"
+                        className="text-slate-700 max-w-2xl mx-auto text-lg md:text-xl font-light"
                     >
                         Dedicated to transforming healthcare accessibility in rural India through transparency, technology, and empathy.
                     </motion.p>
@@ -304,16 +304,18 @@ export default function AboutUs() {
                                 viewport={{ once: true }}
                                 className="relative lg:sticky lg:top-24 mt-12 lg:mt-0"
                             >
-                                <div className="aspect-[4/5] rounded-3xl overflow-hidden bg-gray-50 border-4 border-gray-100 shadow-xl relative max-w-[280px] mx-auto">
-                                    <Image
-                                        src="/images/sandeep-speaking.jpg"
-                                        alt="Sandeep Kumar - Founder of DigiSwasthya"
-                                        fill
-                                        className="object-cover"
-                                    />
+                                <div className="rounded-2xl overflow-hidden bg-black shadow-xl border border-gray-200">
+                                    <video
+                                        controls
+                                        className="w-full h-auto"
+                                        preload="metadata"
+                                    >
+                                        <source src="/Videos/Motive (Digiswasthya).mp4" type="video/mp4" />
+                                        Your browser does not support the video tag.
+                                    </video>
                                 </div>
-                                <div className="absolute -bottom-4 -left-2 bg-primary-600 text-white p-4 rounded-xl shadow-lg max-w-[150px]">
-                                    <p className="font-bold text-sm leading-tight text-center">Founder of DigiSwasthya</p>
+                                <div className="mt-3 text-center">
+                                    <p className="text-sm font-semibold text-primary-600">🎥 Why Sandeep Started DigiSwasthya</p>
                                 </div>
                             </motion.div>
                         </div>

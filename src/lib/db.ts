@@ -1,0 +1,125 @@
+import { db } from "./firebase";
+import { 
+    collection, 
+    doc, 
+    setDoc, 
+    addDoc, 
+    getDoc, 
+    getDocs, 
+    query, 
+    where, 
+    serverTimestamp,
+    updateDoc
+} from "firebase/firestore";
+
+export interface DonationRecord {
+    id: string; // Razorpay payment ID or Mock ID
+    name: string;
+    email: string;
+    amount: number;
+    pan?: string;
+    address?: string;
+    date?: any;
+}
+
+export interface SubscriberRecord {
+    email: string;
+    name: string;
+    isSubscribed: boolean;
+    createdAt?: any;
+}
+
+/**
+ * Saves a successful donation record to Firestore
+ */
+export async function saveDonation(record: DonationRecord) {
+    try {
+        const docRef = doc(db, "donations", record.id);
+        await setDoc(docRef, {
+            ...record,
+            date: record.date || serverTimestamp()
+        });
+        console.log(`[Firestore] Saved donation: ${record.id}`);
+        return true;
+    } catch (error) {
+        console.error("[Firestore Error] Failed to save donation:", error);
+        throw error;
+    }
+}
+
+/**
+ * Auto-enrolls a donor into the subscribers list
+ */
+export async function enrollSubscriber(email: string, name: string) {
+    try {
+        const cleanEmail = email.trim().toLowerCase();
+        const docRef = doc(db, "subscribers", cleanEmail);
+        
+        // We use setDoc to create or merge, keeping their subscription active
+        await setDoc(docRef, {
+            email: cleanEmail,
+            name: name,
+            isSubscribed: true,
+            createdAt: serverTimestamp()
+        }, { merge: true });
+        
+        console.log(`[Firestore] Enrolled subscriber: ${cleanEmail}`);
+        return true;
+    } catch (error) {
+        console.error("[Firestore Error] Failed to enroll subscriber:", error);
+        throw error;
+    }
+}
+
+/**
+ * Unsubscribes a user by setting isSubscribed to false
+ */
+export async function unsubscribeUser(email: string) {
+    try {
+        const cleanEmail = email.trim().toLowerCase();
+        const docRef = doc(db, "subscribers", cleanEmail);
+        
+        // Verify if subscriber exists first
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+            await updateDoc(docRef, {
+                isSubscribed: false
+            });
+            console.log(`[Firestore] Unsubscribed: ${cleanEmail}`);
+            return true;
+        } else {
+            console.warn(`[Firestore] Subscriber not found for unsubscribe: ${cleanEmail}`);
+            return false;
+        }
+    } catch (error) {
+        console.error("[Firestore Error] Failed to unsubscribe:", error);
+        throw error;
+    }
+}
+
+/**
+ * Retrieves all active subscribers (isSubscribed === true)
+ */
+export async function getActiveSubscribers(): Promise<SubscriberRecord[]> {
+    try {
+        const subscribersCol = collection(db, "subscribers");
+        const q = query(subscribersCol, where("isSubscribed", "==", true));
+        const querySnapshot = await getDocs(q);
+        
+        const subscribers: SubscriberRecord[] = [];
+        querySnapshot.forEach((docSnap) => {
+            const data = docSnap.data();
+            subscribers.push({
+                email: data.email,
+                name: data.name,
+                isSubscribed: data.isSubscribed,
+                createdAt: data.createdAt
+            });
+        });
+        
+        return subscribers;
+    } catch (error) {
+        console.error("[Firestore Error] Failed to fetch active subscribers:", error);
+        throw error;
+    }
+}
